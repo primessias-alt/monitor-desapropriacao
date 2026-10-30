@@ -1,0 +1,68 @@
+{
+  "atualizado_em": "2026-10-30",
+  "criterio": "Imobiliárias localizadas por pesquisa na web e conferidas nas páginas das próprias empresas (site, telefone e endereço). A lista não é um ranking de notoriedade: confira antes de contatar.",
+  "municipios": {
+    "Lapa|PR": {
+      "verificado_em": "2026-10-30",
+      "imobiliarias": [
+        {
+          "nome": "Imóveis Prevedello (Reinaldo Prevedello)",
+          "site": "https://www.prevedelloimoveis.com.br/",
+          "telefones": [
+            "(41) 3622-1486",
+            "(41) 99906-4761"
+          ],
+          "endereco": "Rua Nossa Senhora do Rocio, 307, Centro, Lapa-PR",
+          "creci": "12.239",
+          "fonte": "https://www.prevedelloimoveis.com.br/sobre"
+        },
+        {
+          "nome": "Ilton Imóveis (Imobiliária Ilton Pereira)",
+          "site": "https://www.iltonimoveis.com.br/",
+          "telefones": [
+            "(41) 99502-2680"
+          ],
+          "endereco": "Rua Desembargador Westphalen, 43, Centro, Lapa-PR",
+          "creci": "",
+          "fonte": "https://www.iltonimoveis.com.br/"
+        },
+        {
+          "nome": "Joacir Ribas Imóveis",
+          "site": "http://www.joacirribasimoveis.com.br/",
+          "telefones": [
+            "(41) 99960-0036"
+          ],
+          "endereco": "Av. Caetano Munhoz da Rocha, 1304, sala 01, Centro, Lapa-PR",
+          "creci": "F27569",
+          "fonte": "http://www.joacirribasimoveis.com.br/"
+        },
+        {
+          "nome": "Imóveis na Lapa",
+          "site": "https://www.imoveisnalapa.net.br/",
+          "telefones": [
+            "(41) 98813-2020"
+          ],
+          "endereco": "Av. Aloísio Leoni, 118, sala 1, Lapa-PR",
+          "creci": "132 J",
+          "fonte": "https://www.imoveisnalapa.net.br/"
+        }
+      ],
+      "manual": true
+    },
+    "Londrina|PR": {
+      "verificado_em": "2026-10-30",
+      "imobiliarias": [
+        {
+          "nome": "Imobiliária Atual",
+          "site": "",
+          "telefones": [],
+          "endereco": "Rua Duque de Caxias, 748, Centro, Londrina-PR",
+          "creci": "03307-J-PR",
+          "fonte": "https://www.zapimoveis.com.br/imobiliaria/43717/",
+          "obs": "Em Londrina desde 1995, descrita como uma das mais tradicionais. Site e telefone ainda não confirmados."
+        }
+      ],
+      "manual": true
+    }
+  }
+}
