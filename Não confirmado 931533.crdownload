@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Para cada município citado em data/atos.json que ainda não tem imobiliárias,
+busca no Google Places as mais bem avaliadas e grava em data/imobiliarias.json.
+
+Uso:  GOOGLE_MAPS_API_KEY=... python scripts/buscar_imobiliarias.py [--topo 3] [--min-avaliacoes 5]
+Entradas com "manual": true nunca são sobrescritas."""
+import argparse, json, os, re, sys, time, urllib.request
+from datetime import date
+
+URL = "https://places.googleapis.com/v1/places:searchText"
+CAMPOS = ",".join("places." + c for c in ["id", "displayName", "formattedAddress", "nationalPhoneNumber",
+                  "websiteUri", "rating", "userRatingCount", "googleMapsUri", "businessStatus"])
+
+def buscar(chave, municipio, uf):
+    corpo = json.dumps({"textQuery": f"imobiliária em {municipio}, {uf}, Brasil", "includedType": "real_estate_agency",
+                        "languageCode": "pt-BR", "regionCode": "BR", "pageSize": 20}).encode()
+    req = urllib.request.Request(URL, corpo, {"Content-Type": "application/json",
+                                 "X-Goog-Api-Key": chave, "X-Goog-FieldMask": CAMPOS})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r).get("places", [])
+
+def nota(p, m=10, c=4.2):
+    # média bayesiana: evita que 1 avaliação 5,0 vença 200 avaliações 4,8
+    v, r = p.get("userRatingCount", 0), p.get("rating", 0)
+    return (v / (v + m)) * r + (m / (v + m)) * c
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--atos", default="data/atos.json"); ap.add_argument("--saida", default="data/imobiliarias.json")
+    ap.add_argument("--topo", type=int, default=3); ap.add_argument("--min-avaliacoes", type=int, default=5)
+    a = ap.parse_args()
+    chave = os.environ.get("GOOGLE_MAPS_API_KEY")
+    if not chave: sys.exit("Defina GOOGLE_MAPS_API_KEY.")
+    atos = json.load(open(a.atos, encoding="utf-8"))
+    base = json.load(open(a.saida, encoding="utf-8")) if os.path.exists(a.saida) else {}
+    base.setdefault("municipios", {})
+    base["criterio"] = ("Imobiliárias ordenadas pela avaliação no Google (média ajustada pelo número de avaliações). "
+                        "Não é ranking de notoriedade: confira antes de contatar.")
+    alvos = sorted({(m, x["uf"]) for x in atos if x.get("municipio") for m in re.split(r"\s+e\s+", x["municipio"])})
+    for m, uf in alvos:
+        k = f"{m}|{uf}"
+        if k in base["municipios"]: continue
+        try:
+            lugares = [p for p in buscar(chave, m, uf) if p.get("businessStatus") in (None, "OPERATIONAL")
+                       and p.get("userRatingCount", 0) >= a.min_avaliacoes]
+        except Exception as e:
+            print(f"[erro] {k}: {e}", file=sys.stderr); continue
+        lugares.sort(key=nota, reverse=True)
+        base["municipios"][k] = {"verificado_em": date.today().isoformat(), "imobiliarias": [{
+            "nome": p["displayName"]["text"], "site": p.get("websiteUri", ""),
+            "telefones": [p["nationalPhoneNumber"]] if p.get("nationalPhoneNumber") else [],
+            "endereco": p.get("formattedAddress", ""), "creci": "", "fonte": p.get("googleMapsUri", ""),
+            "obs": f"Avaliação {str(p.get('rating', '')).replace('.', ',')} ({p.get('userRatingCount', 0)} avaliações no Google)"}
+            for p in lugares[:a.topo]]}
+        print(f"{k}: {len(lugares[:a.topo])} imobiliária(s)"); time.sleep(0.2)
+    base["atualizado_em"] = date.today().isoformat()
+    json.dump(base, open(a.saida, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+
+if __name__ == "__main__": main()
