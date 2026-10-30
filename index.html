@@ -37,29 +37,7 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1); --t-hover: 150ms; --t-ui: 240ms;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --ground: #000000; --surface: #111113; --raised: #1c1c1f; --active: #2a2a2e;
-  --border: #232327; --rule: #1d1d21; --control: #3a3a40;
-  --text: #f5f5f7; --muted: #b4b6bd; --faint: #9a9ca4;
-  --accent: #d9707d; --accent-tint: #3a1d22;
-  --primary: #f5f5f7; --primary-ink: #111113;
-  --positive: #3fc07a; --negative: #e5566f;
-  --pill-neutral-bg: #2a2a2e; --pill-neutral-ink: #e6e6ea;
-  --pill-warning-bg: #2b2414; --pill-warning-ink: #e5a93b;
-  --chart-muted: #4a4c53; --grid: #242428; --chart-span: 0.12;
-  color-scheme: dark; } }
-:root[data-theme="dark"] {
-  --ground: #000000; --surface: #111113; --raised: #1c1c1f; --active: #2a2a2e;
-  --border: #232327; --rule: #1d1d21; --control: #3a3a40;
-  --text: #f5f5f7; --muted: #b4b6bd; --faint: #9a9ca4;
-  --accent: #d9707d; --accent-tint: #3a1d22;
-  --primary: #f5f5f7; --primary-ink: #111113;
-  --positive: #3fc07a; --negative: #e5566f;
-  --pill-neutral-bg: #2a2a2e; --pill-neutral-ink: #e6e6ea;
-  --pill-warning-bg: #2b2414; --pill-warning-ink: #e5a93b;
-  --chart-muted: #4a4c53; --grid: #242428; --chart-span: 0.12;
-  color-scheme: dark;
-}
+
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -262,6 +240,20 @@ th.n, td.n { text-align: right; }
   tbody tr:hover td, tbody tr[aria-selected="true"] td { background: none; }
   .src-table tbody tr { grid-template-columns: minmax(0, 1fr) auto; }
 }
+.im-wrap{display:grid;gap:12px}
+.im-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);padding:var(--card-pad)}
+.im-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.im-head h3{font-size:16px;line-height:22px;font-weight:600}
+.im-head h3 small{color:var(--muted);font-weight:500;margin-left:6px;font-size:13px}
+.im-head p{color:var(--muted);font-size:13px;line-height:18px;margin-top:2px}
+.im-list{list-style:none;margin:14px 0 0;padding:0}
+.im-list li{display:grid;gap:3px;padding:12px 0;border-top:1px solid var(--border);font-size:14px;line-height:20px}
+.im-list li:first-child{margin-top:0}
+.im-list b{font-weight:600}
+.im-list a,.im-foot a{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.im-list .m{color:var(--muted);font-size:13px;line-height:18px}
+.im-foot{margin-top:10px;font-size:13px;line-height:18px;color:var(--muted)}
+.im-note{margin-top:20px;color:var(--muted);font-size:13px;line-height:19px;max-width:80ch}
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; } }
 </style>
 
@@ -276,6 +268,7 @@ th.n, td.n { text-align: right; }
     <p class="group-label">Monitor</p>
     <nav>
       <a class="nav-item" href="#atos" data-view="atos"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.75h6l3 3v9.5h-9z"/><path d="M9.5 1.75v3h3M5.75 8h4.5M5.75 10.75h4.5"/></svg>Atos publicados</a>
+      <a class="nav-item" href="#imobiliarias" data-view="imob"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 14V7L8 2.5 13.5 7v7z"/><path d="M6.5 14v-4h3v4"/></svg>Imobiliárias</a>
       <a class="nav-item" href="#fontes" data-view="fontes"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 4.5V8l2.5 1.5"/></svg>Fontes e coleta</a>
     </nav>
     <div class="bottom">
@@ -356,6 +349,30 @@ th.n, td.n { text-align: right; }
             <div class="panel detail" id="detalhe"><div class="empty">Selecione um ato na lista para ler o trecho e abrir o Diário Oficial.</div></div>
           </aside>
         </div>
+      </section>
+
+      <!-- ===================== IMOBILIÁRIAS ===================== -->
+      <section id="view-imob" aria-labelledby="t-imob" hidden>
+        <div class="title-row">
+          <div>
+            <h1 id="t-imob">Imobiliárias nos municípios</h1>
+            <p class="sub" id="imobSub">Municípios citados nos atos, com as imobiliárias da região.</p>
+          </div>
+          <div class="title-actions">
+            <button type="button" class="btn secondary" id="btnCsvIm"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.75 7.5 8 10.75l3.25-3.25M3 13.25h10"/></svg>Exportar CSV</button>
+          </div>
+        </div>
+        <div class="filters" role="group" aria-label="Filtros de imobiliárias">
+          <label class="visually-hidden" for="iUF">UF</label><select class="select" id="iUF"></select>
+          <label class="visually-hidden" for="iSt">Situação</label><select class="select" id="iSt">
+            <option value="">Todos os municípios</option><option value="com">Com imobiliária pesquisada</option><option value="sem">Ainda sem pesquisa</option></select>
+          <button type="button" class="btn ghost" id="iLimpar" hidden>Mostrar todos os municípios</button>
+          <span class="spacer"></span>
+          <div class="search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.75"/><path d="m10.5 10.5 3 3"/></svg><label class="visually-hidden" for="iQ">Buscar município ou imobiliária</label><input type="search" id="iQ" placeholder="Buscar município ou imobiliária"></div>
+        </div>
+        <div class="im-wrap" id="imobLista"></div>
+        <div class="empty" id="imobVazio" hidden>Nenhum município corresponde a estes filtros.</div>
+        <p class="im-note" id="imobNota"></p>
       </section>
 
       <!-- ===================== FONTES ===================== -->
@@ -493,10 +510,10 @@ th.n, td.n { text-align: right; }
   function aplicar(lista, rotulo, exemplo) {
     dados = preparar(lista); origem = rotulo; selId = null; limite = POR_PAGINA;
     $("avisoExemplo").hidden = !exemplo; $("avisoErro").hidden = true;
-    opcoes(); render(); renderFontes();
+    opcoes(); render(); renderFontes(); renderImob();
   }
   function erro(msg) { const e = $("avisoErro"); e.textContent = msg; e.hidden = false; }
-  async function json(url) { const r = await fetch(url, { cache: "no-cache" }); if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }
+  async function json(url) { if (window.__EMB && url in window.__EMB) return window.__EMB[url]; const r = await fetch(url, { cache: "no-cache" }); if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }
   async function carregarURL(url) {
     try {
       const lista = await json(url);
@@ -671,9 +688,11 @@ th.n, td.n { text-align: right; }
         ${fict ? `<span class="btn primary" aria-disabled="true">Documento fictício</span>`
           : `<a class="btn primary" href="${esc(a.url_fonte)}" target="_blank" rel="noopener noreferrer">${a.tipo_ato === "Notícia oficial" ? "Abrir notícia oficial" : "Abrir no Diário Oficial"}<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5h6.5V10M12.5 3.5 4 12"/></svg></a>`}
         <button type="button" class="btn" id="copiar">Copiar referência</button>
+        ${a.municipio ? '<button type="button" class="btn" id="verImob">Imobiliárias da região</button>' : ""}
       </div>
       <p class="note">${a.fonte === "dioe_pr" ? "O texto do Diário do Paraná vem de PDF em duas colunas: confira o número do decreto na página aberta." : "Extração automática por expressões regulares. Confira o ato no documento oficial antes de qualquer providência."}</p>`;
     $("voltar").addEventListener("click", fecharDetalhe);
+    const vi = $("verImob"); if (vi) vi.addEventListener("click", () => { fi.keys = a.municipio.split(/\s+e\s+/); fi.uf = ""; fi.st = ""; fi.q = ""; location.hash = "#imobiliarias"; });
     $("copiar").addEventListener("click", async (ev) => {
       const txt = `${tipo(a)} ${numeroAto(a)} (${a.orgao_emissor || a.esfera}, ${local(a)}), publicado em ${fmtData(a.data_publicacao)}. Fonte: ${a.url_fonte}`;
       try { await navigator.clipboard.writeText(txt); ev.target.textContent = "Referência copiada"; }
@@ -712,12 +731,80 @@ th.n, td.n { text-align: right; }
 
   // ---------- navegação ----------
   function rota() {
-    const v = location.hash === "#fontes" ? "fontes" : "atos";
-    $("view-atos").hidden = v !== "atos"; $("view-fontes").hidden = v !== "fontes";
+    const v = location.hash === "#fontes" ? "fontes" : location.hash === "#imobiliarias" ? "imob" : "atos";
+    $("view-atos").hidden = v !== "atos"; $("view-fontes").hidden = v !== "fontes"; $("view-imob").hidden = v !== "imob"; if (v === "imob") renderImob();
     document.querySelectorAll(".nav-item").forEach((n) => { if (n.dataset.view === v) n.setAttribute("aria-current", "page"); else n.removeAttribute("aria-current"); });
     menu(false);
   }
   function menu(abrir) { $("sidebar").classList.toggle("open", abrir); $("abrirMenu").setAttribute("aria-expanded", abrir); }
+
+  // ---------- imobiliárias ----------
+  let imob = { municipios: {} };
+  const fi = { uf: "", st: "", q: "", keys: null };
+  const urlOk = (u) => (/^https?:\/\//i.test(u || "") ? u : "");
+  const telHref = (t) => "tel:+55" + String(t).replace(/\D/g, "");
+  const mapsUrl = (m, uf) => "https://www.google.com/maps/search/" + encodeURIComponent(`imobiliária em ${m} ${uf}`);
+  async function carregarImob() { try { imob = await json("data/imobiliarias.json"); } catch (e) { imob = { municipios: {} }; } renderImob(); }
+  function municipiosImob() {
+    const mapa = new Map();
+    dados.forEach((a) => {
+      if (!a.municipio) return;
+      a.municipio.split(/\s+e\s+/).forEach((m) => {
+        const k = `${m}|${a.uf}`, x = mapa.get(k) || { m, uf: a.uf, n: 0, ult: "" };
+        x.n++; if (a.data_publicacao > x.ult) x.ult = a.data_publicacao; mapa.set(k, x);
+      });
+    });
+    return [...mapa.values()].map((x) => ({ ...x, reg: (imob.municipios || {})[`${x.m}|${x.uf}`] || null }))
+      .sort((x, y) => (y.uf === "PR") - (x.uf === "PR") || y.n - x.n || x.m.localeCompare(y.m, "pt-BR"));
+  }
+  function renderImob() {
+    if (!$("imobLista")) return;
+    const todos = municipiosImob(), ufsL = [...new Set(todos.map((x) => x.uf))].sort();
+    $("iUF").innerHTML = `<option value="">Todas as UFs</option>` + ufsL.map((u) => `<option value="${esc(u)}">${esc(u)}</option>`).join("");
+    $("iUF").value = fi.uf; $("iSt").value = fi.st;
+    if (document.activeElement !== $("iQ")) $("iQ").value = fi.q;
+    $("iLimpar").hidden = !fi.keys;
+    const q = norm(fi.q).trim();
+    const l = todos.filter((x) => (!fi.keys || fi.keys.includes(x.m)) && (!fi.uf || x.uf === fi.uf) &&
+      (!fi.st || (fi.st === "com" ? x.reg && x.reg.imobiliarias.length : !(x.reg && x.reg.imobiliarias.length))) &&
+      (!q || norm([x.m, x.uf, ...(x.reg ? x.reg.imobiliarias.map((i) => i.nome) : [])].join(" ")).includes(q)));
+    const com = todos.filter((x) => x.reg && x.reg.imobiliarias.length).length;
+    $("imobSub").innerHTML = todos.length ? `<strong>${nf.format(com)} de ${nf.format(todos.length)} municípios</strong> citados nos atos já têm imobiliárias pesquisadas.` : "Carregue os atos para ver os municípios.";
+    $("imobVazio").hidden = l.length > 0;
+    $("imobLista").innerHTML = l.map((x) => {
+      const im = x.reg ? x.reg.imobiliarias : [];
+      const itens = im.map((i) => {
+        const site = urlOk(i.site), fonte = urlOk(i.fonte);
+        const tels = (i.telefones || []).map((t) => `<a href="${esc(telHref(t))}">${esc(t)}</a>`).join(" · ");
+        return `<li><span><b>${site ? `<a href="${esc(site)}" target="_blank" rel="noopener noreferrer">${esc(i.nome)}</a>` : esc(i.nome)}</b>${i.creci ? ` <span class="m">CRECI ${esc(i.creci)}</span>` : ""}</span>
+          <span>${tels || '<span class="m">Telefone não confirmado</span>'}</span>
+          ${i.endereco ? `<span class="m">${esc(i.endereco)}</span>` : ""}${i.obs ? `<span class="m">${esc(i.obs)}</span>` : ""}
+          ${fonte ? `<span class="m"><a href="${esc(fonte)}" target="_blank" rel="noopener noreferrer">Fonte da informação</a></span>` : ""}</li>`;
+      }).join("");
+      return `<article class="im-card"><div class="im-head"><div><h3>${esc(x.m)}<small>${esc(x.uf)}</small></h3>
+        <p>${x.n} ${x.n === 1 ? "ato" : "atos"} · último em ${fmtData(x.ult)}${x.reg && x.reg.verificado_em ? ` · pesquisado em ${fmtData(x.reg.verificado_em)}` : ""}</p></div>
+        <span class="pill${im.length ? "" : " warn"}">${im.length ? `${im.length} ${im.length === 1 ? "imobiliária" : "imobiliárias"}` : "Ainda sem pesquisa"}</span></div>
+        ${im.length ? `<ul class="im-list">${itens}</ul>` : ""}
+        <p class="im-foot"><a href="${esc(mapsUrl(x.m, x.uf))}" target="_blank" rel="noopener noreferrer">Buscar imobiliárias de ${esc(x.m)} no Google Maps</a></p></article>`;
+    }).join("");
+    $("imobNota").textContent = imob.criterio || "";
+  }
+  function baixar(nome, txt) {
+    const url = URL.createObjectURL(new Blob([txt], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a"); link.href = url; link.download = nome;
+    document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+  async function csvImob() {
+    const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`, cols = ["municipio", "uf", "atos", "ultimo_ato", "imobiliaria", "site", "telefones", "endereco", "creci", "fonte"], linhas = [];
+    municipiosImob().forEach((x) => {
+      const im = x.reg ? x.reg.imobiliarias : [];
+      (im.length ? im : [{}]).forEach((i) => linhas.push([x.m, x.uf, x.n, x.ult, i.nome, i.site, (i.telefones || []).join(" / "), i.endereco, i.creci, i.fonte].map(q).join(";")));
+    });
+    const txt = "\ufeff" + [cols.join(";"), ...linhas].join("\r\n"), nome = `imobiliarias-${iso(hoje())}.csv`;
+    const dl = window.claude && window.claude.use ? await window.claude.use("downloads").catch(() => null) : null;
+    if (dl) { try { await dl.save({ filename: nome, data: txt }); } catch (e) {} return; }
+    baixar(nome, txt);
+  }
 
   function ligar() {
     const reset = () => { limite = POR_PAGINA; render(); };
@@ -754,10 +841,15 @@ th.n, td.n { text-align: right; }
     $("abrirMenu").addEventListener("click", () => menu(true));
     $("fecharMenu").addEventListener("click", () => menu(false));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { menu(false); fecharDetalhe(); } });
+    $("iUF").addEventListener("change", (e) => { fi.uf = e.target.value; renderImob(); });
+    $("iSt").addEventListener("change", (e) => { fi.st = e.target.value; renderImob(); });
+    $("iQ").addEventListener("input", (e) => { fi.q = e.target.value; fi.keys = null; renderImob(); });
+    $("iLimpar").addEventListener("click", () => { fi.keys = null; renderImob(); });
+    $("btnCsvIm").addEventListener("click", csvImob);
     addEventListener("hashchange", rota);
   }
 
-  ligar(); rota(); iniciar();
+  ligar(); rota(); carregarImob(); iniciar();
 })();
 </script>
 
