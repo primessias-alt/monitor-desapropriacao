@@ -1,7 +1,7 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-01T07:02:55-03:00",
+      "executado_em": "2026-11-01T21:14:04-03:00",
       "periodo": "2026-10-28 a 2026-11-01",
       "modo": "indexacao",
       "consultas_ok": 5,
@@ -15,7 +15,7 @@
       "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-01T07:03:01-03:00",
+      "executado_em": "2026-11-01T21:14:11-03:00",
       "periodo": "2026-10-30 a 2026-11-01",
       "modo": "leitura",
       "materias_analisadas": 0,
@@ -25,7 +25,7 @@
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-01T07:03:07-03:00",
+      "executado_em": "2026-11-01T21:14:17-03:00",
       "periodo": "2026-10-28 a 2026-11-01",
       "consultas_ok": 4,
       "consultas_total": 4,
@@ -36,16 +36,16 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-01T07:04:26-03:00",
+      "executado_em": "2026-11-01T21:15:36-03:00",
       "periodo": "2026-10-29 a 2026-11-01",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
-      "atos_extraidos": 1,
+      "atos_extraidos": 0,
       "novos": 0,
       "atualizados": 0,
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-01T07:04:26-03:00",
+  "ultima_execucao": "2026-11-01T21:15:36-03:00",
   "total_atos": 235
 }
