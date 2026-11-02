@@ -1,22 +1,28 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-01T21:14:04-03:00",
-      "periodo": "2026-10-28 a 2026-11-01",
+      "executado_em": "2026-11-02T07:31:09-03:00",
+      "periodo": "2026-10-29 a 2026-11-02",
       "modo": "indexacao",
-      "consultas_ok": 5,
+      "consultas_ok": 0,
       "consultas_total": 5,
-      "diarios_candidatos": 12,
-      "textos_integrais_baixados": 12,
-      "atos_extraidos": 5,
+      "diarios_candidatos": 0,
+      "textos_integrais_baixados": 0,
+      "atos_extraidos": 0,
       "novos": 0,
-      "atualizados": 1,
-      "erros": [],
-      "base_api": "https://api.queridodiario.org.br"
+      "atualizados": 0,
+      "erros": [
+        "consulta falhou: (\"utilidade pública\" | \"utilidade publica\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"interesse social\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"necessidade pública\" | \"necessidade publica\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"servidão administrativa\" | \"servidao administrativa\") + decreto (offset 0)",
+        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
+      ],
+      "base_api": null
     },
     "dou": {
-      "executado_em": "2026-11-01T21:14:11-03:00",
-      "periodo": "2026-10-30 a 2026-11-01",
+      "executado_em": "2026-11-02T07:31:13-03:00",
+      "periodo": "2026-10-31 a 2026-11-02",
       "modo": "leitura",
       "materias_analisadas": 0,
       "atos_extraidos": 0,
@@ -25,8 +31,8 @@
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-01T21:14:17-03:00",
-      "periodo": "2026-10-28 a 2026-11-01",
+      "executado_em": "2026-11-02T07:31:18-03:00",
+      "periodo": "2026-10-29 a 2026-11-02",
       "consultas_ok": 4,
       "consultas_total": 4,
       "paginas_analisadas": 0,
@@ -36,8 +42,8 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-01T21:15:36-03:00",
-      "periodo": "2026-10-29 a 2026-11-01",
+      "executado_em": "2026-11-02T07:32:37-03:00",
+      "periodo": "2026-10-30 a 2026-11-02",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
       "atos_extraidos": 0,
@@ -46,6 +52,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-01T21:15:36-03:00",
+  "ultima_execucao": "2026-11-02T07:32:37-03:00",
   "total_atos": 235
 }
