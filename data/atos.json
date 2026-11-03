@@ -1327,6 +1327,38 @@
     "coletado_em": "2026-10-30T09:50:35-03:00"
   },
   {
+    "id": "7fe57d86f32fbbff",
+    "data_publicacao": "2026-10-19",
+    "esfera": "Municipal",
+    "uf": "SP",
+    "municipio": "Rio Claro",
+    "orgao_emissor": "Prefeitura Municipal de Rio Claro",
+    "numero_ato": null,
+    "resumo_contexto": "… e integridade. GABINETE DO PREFEITO Gabinete do Prefeito Atos Oficiais Atos Oficiais Decretos Decretos D E C R E T O Nº 13. 956 de 05 de outubro de 2026 (Declara de utilidade pública, para fins de desapropriação, parte de imóvel que especifica, e dá outras providências) GUSTAVO RAMOS PERISSINOTTO, Prefeito do Município de Rio Claro/SP, usando das atribuições que a Lei lhe confere e, CONSIDERANDO que compete ao Município promover o adequado ordenamento territorial e o planejamento do …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/3543907/2026-10-19/28a976eccca74bd6600d7c4eb01fcbe5e202865d.pdf",
+    "tipo_ato": "Não identificado",
+    "tags": [
+      "coordenadas",
+      "matricula",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Viário/Rodovia"
+    ],
+    "matriculas": [
+      "74.579",
+      "3.569",
+      "78.001"
+    ],
+    "areas": [],
+    "score": 10,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/3543907/2026-10-19/28a976eccca74bd6600d7c4eb01fcbe5e202865d.txt",
+    "edicao": "2015",
+    "coletado_em": "2026-11-03T07:14:53-03:00"
+  },
+  {
     "id": "b6907a4f962ba80a",
     "data_publicacao": "2026-10-17",
     "esfera": "Municipal",
@@ -3106,6 +3138,38 @@
     "coletado_em": "2026-11-02T21:16:00-03:00"
   },
   {
+    "id": "fa4cbe8df8abe90b",
+    "data_publicacao": "2026-10-02",
+    "esfera": "Municipal",
+    "uf": "SP",
+    "municipio": "Tremembé",
+    "orgao_emissor": "Prefeitura Municipal de Tremembé",
+    "numero_ato": "8.098",
+    "resumo_contexto": "DECRETO N° 8.098, DE 18 DE SETEMBRO DE 2026. “Declara de utilidade pública, i m ó v e i s u r b a n o s p a r a desapropriação, para o fim que especifica.” CLEMENTE ANTONIO DE LIMA NETO, Prefeito Municipal da Estância Turística de Tremembé, Estado de São Paulo, no uso de suas atribuições legais, CONSIDERANDO o artigo 4º, inciso XVIII, da Lei Orgânica do Município, o qual dispõe que, no exercício de sua autonomia, compete ao Município legislar e prover tudo quanto respeite ao interesse local, …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/3554805/2026-10-02/3258a764938114a3ad3f6be21dfa72897eeba608.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "interesse_social",
+      "matricula",
+      "urgencia",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Lazer/Ambiental",
+      "Viário/Rodovia"
+    ],
+    "matriculas": [
+      "11.516"
+    ],
+    "areas": [],
+    "score": 10,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/3554805/2026-10-02/3258a764938114a3ad3f6be21dfa72897eeba608.txt",
+    "edicao": "2454",
+    "coletado_em": "2026-11-03T07:14:49-03:00"
+  },
+  {
     "id": "f2ad7ab9622e780a",
     "data_publicacao": "2026-10-02",
     "esfera": "Municipal",
@@ -3204,10 +3268,10 @@
     "matriculas": [],
     "areas": [
       "1.271,49 m²",
-      "498.132,19 m²",
+      "12.634,34 m²",
       "193,37 m²",
-      "744,27 m²",
-      "12.634,34 m²"
+      "498.132,19 m²",
+      "744,27 m²"
     ],
     "score": 9,
     "confianca": "alta",
@@ -3239,8 +3303,8 @@
     ],
     "areas": [
       "1.271,49 m²",
-      "498.132,19 m²",
       "193,37 m²",
+      "498.132,19 m²",
       "744,27 m²"
     ],
     "score": 10,
@@ -3296,8 +3360,8 @@
     ],
     "matriculas": [],
     "areas": [
-      "300,00 m²",
-      "3,7 ha"
+      "3,7 ha",
+      "300,00 m²"
     ],
     "score": 10,
     "confianca": "alta",
@@ -3305,6 +3369,37 @@
     "url_texto": "https://data.queridodiario.ok.org.br/2931608/2026-10-01/9871f88a462523e895704b2d2abf70c1319d4546.txt",
     "edicao": "2.820",
     "coletado_em": "2026-11-02T21:16:02-03:00"
+  },
+  {
+    "id": "a1044b9e7ed1be38",
+    "data_publicacao": "2026-10-01",
+    "esfera": "Municipal",
+    "uf": "SP",
+    "municipio": "Tapiraí",
+    "orgao_emissor": "Prefeitura Municipal de Tapiraí",
+    "numero_ato": "062/2026",
+    "resumo_contexto": "DECRETO Nº 062/2026 DE 01 DE OUTUBRO DE 2026 “Declara imóvel de utilidade pública para fins de Desapropriação e/ou Instituição de Servidão de Passagem, imóvel situado neste município necessário à Companhia de Saneamento Básico do Estado de São Paulo - SABESP”. ARALDO TODESCO, Prefeito do Município de Tapiraí, Estado de São Paulo, no uso de suas atribuições legais e nos termos da Lei Orgânica do Município, combinada com os arts. 2º, 6º e 40 do Decreto-Lei Federal n° 3.365, de 21 de junho de …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/3553500/2026-10-01/cef77623b9ebc87de6cdcbb351733aabfc6c738e.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "coordenadas",
+      "servidao",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Saneamento",
+      "Viário/Rodovia"
+    ],
+    "matriculas": [],
+    "areas": [
+      "119,53 m²"
+    ],
+    "score": 11,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/3553500/2026-10-01/cef77623b9ebc87de6cdcbb351733aabfc6c738e.txt",
+    "edicao": "1433",
+    "coletado_em": "2026-11-03T07:14:49-03:00"
   },
   {
     "id": "8dec5aef3e00bc7d",
