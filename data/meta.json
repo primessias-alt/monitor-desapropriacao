@@ -1,36 +1,32 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-04T21:25:25-03:00",
-      "periodo": "2026-10-31 a 2026-11-04",
+      "executado_em": "2026-11-05T07:24:55-03:00",
+      "periodo": "2026-11-01 a 2026-11-05",
       "modo": "indexacao",
       "consultas_ok": 5,
       "consultas_total": 5,
-      "diarios_candidatos": 17,
-      "textos_integrais_baixados": 17,
-      "atos_extraidos": 14,
-      "novos": 1,
+      "diarios_candidatos": 21,
+      "textos_integrais_baixados": 21,
+      "atos_extraidos": 17,
+      "novos": 3,
       "atualizados": 4,
       "erros": [],
       "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-04T21:26:59-03:00",
-      "periodo": "2026-11-02 a 2026-11-04",
+      "executado_em": "2026-11-05T07:25:33-03:00",
+      "periodo": "2026-11-03 a 2026-11-05",
       "modo": "leitura",
-      "materias_analisadas": 0,
-      "atos_extraidos": 0,
-      "novos": 0,
+      "materias_analisadas": 15,
+      "atos_extraidos": 15,
+      "novos": 15,
       "atualizados": 0,
-      "erros": [
-        "leitura 2026-11-02 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=02-11-2026&secao=do1",
-        "leitura 2026-11-03 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=03-11-2026&secao=do1",
-        "leitura 2026-11-04 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=04-11-2026&secao=do1"
-      ]
+      "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-04T21:27:05-03:00",
-      "periodo": "2026-10-31 a 2026-11-04",
+      "executado_em": "2026-11-05T07:25:39-03:00",
+      "periodo": "2026-11-01 a 2026-11-05",
       "consultas_ok": 4,
       "consultas_total": 4,
       "paginas_analisadas": 0,
@@ -40,16 +36,16 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-04T21:28:23-03:00",
-      "periodo": "2026-11-01 a 2026-11-04",
+      "executado_em": "2026-11-05T07:26:57-03:00",
+      "periodo": "2026-11-02 a 2026-11-05",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
-      "atos_extraidos": 1,
+      "atos_extraidos": 0,
       "novos": 0,
       "atualizados": 0,
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-04T21:28:23-03:00",
-  "total_atos": 250
+  "ultima_execucao": "2026-11-05T07:26:57-03:00",
+  "total_atos": 268
 }
