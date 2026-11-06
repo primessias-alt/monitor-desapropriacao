@@ -1,31 +1,35 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-05T07:24:55-03:00",
+      "executado_em": "2026-11-05T21:32:42-03:00",
       "periodo": "2026-11-01 a 2026-11-05",
       "modo": "indexacao",
-      "consultas_ok": 5,
+      "consultas_ok": 2,
       "consultas_total": 5,
-      "diarios_candidatos": 21,
-      "textos_integrais_baixados": 21,
-      "atos_extraidos": 17,
-      "novos": 3,
-      "atualizados": 4,
-      "erros": [],
-      "base_api": "https://api.queridodiario.org.br"
+      "diarios_candidatos": 2,
+      "textos_integrais_baixados": 2,
+      "atos_extraidos": 0,
+      "novos": 0,
+      "atualizados": 0,
+      "erros": [
+        "consulta falhou: (\"utilidade pública\" | \"utilidade publica\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"interesse social\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
+      ],
+      "base_api": "https://queridodiario.ok.org.br/api"
     },
     "dou": {
-      "executado_em": "2026-11-05T07:25:33-03:00",
+      "executado_em": "2026-11-05T21:33:26-03:00",
       "periodo": "2026-11-03 a 2026-11-05",
       "modo": "leitura",
       "materias_analisadas": 15,
       "atos_extraidos": 15,
-      "novos": 15,
+      "novos": 0,
       "atualizados": 0,
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-05T07:25:39-03:00",
+      "executado_em": "2026-11-05T21:33:31-03:00",
       "periodo": "2026-11-01 a 2026-11-05",
       "consultas_ok": 4,
       "consultas_total": 4,
@@ -36,7 +40,7 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-05T07:26:57-03:00",
+      "executado_em": "2026-11-05T21:34:51-03:00",
       "periodo": "2026-11-02 a 2026-11-05",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
@@ -46,6 +50,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-05T07:26:57-03:00",
+  "ultima_execucao": "2026-11-05T21:34:51-03:00",
   "total_atos": 268
 }
