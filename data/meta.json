@@ -1,47 +1,48 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-05T21:32:42-03:00",
-      "periodo": "2026-11-01 a 2026-11-05",
+      "executado_em": "2026-11-06T07:22:52-03:00",
+      "periodo": "2026-11-02 a 2026-11-06",
       "modo": "indexacao",
-      "consultas_ok": 2,
+      "consultas_ok": 5,
       "consultas_total": 5,
-      "diarios_candidatos": 2,
-      "textos_integrais_baixados": 2,
-      "atos_extraidos": 0,
-      "novos": 0,
-      "atualizados": 0,
-      "erros": [
-        "consulta falhou: (\"utilidade pública\" | \"utilidade publica\") + (desapropria* | expropria*) (offset 0)",
-        "consulta falhou: (\"interesse social\") + (desapropria* | expropria*) (offset 0)",
-        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
-      ],
-      "base_api": "https://queridodiario.ok.org.br/api"
+      "diarios_candidatos": 27,
+      "textos_integrais_baixados": 27,
+      "atos_extraidos": 19,
+      "novos": 2,
+      "atualizados": 5,
+      "erros": [],
+      "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-05T21:33:26-03:00",
-      "periodo": "2026-11-03 a 2026-11-05",
+      "executado_em": "2026-11-06T07:23:32-03:00",
+      "periodo": "2026-11-04 a 2026-11-06",
       "modo": "leitura",
-      "materias_analisadas": 15,
-      "atos_extraidos": 15,
-      "novos": 0,
+      "materias_analisadas": 16,
+      "atos_extraidos": 16,
+      "novos": 1,
       "atualizados": 0,
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-05T21:33:31-03:00",
-      "periodo": "2026-11-01 a 2026-11-05",
-      "consultas_ok": 4,
+      "executado_em": "2026-11-06T07:55:31-03:00",
+      "periodo": "2026-11-02 a 2026-11-06",
+      "consultas_ok": 0,
       "consultas_total": 4,
       "paginas_analisadas": 0,
       "atos_extraidos": 0,
       "novos": 0,
       "atualizados": 0,
-      "erros": []
+      "erros": [
+        "\"utilidade pública\" desapropriação p0: HTTPSConnectionPool(host='dioe.pr.gov.br', port=443): Max retries exceeded with url: /busca/busca/buscar/query/0/di:2026-11-02/df:2026-11-06/?1=1&q=%22utilidade%20p%C3%BAblica%22%20desapropria%C3%A7%C3%A3o (Caused by ConnectTimeoutError(<HTTPSConnection(host='dioe.pr.gov.br', port=443) at 0x7da72df26bd0>, 'Connection to dioe.pr.gov.br timed out. (connect timeout=90)'))",
+        "\"interesse social\" desapropriação p0: HTTPSConnectionPool(host='dioe.pr.gov.br', port=443): Max retries exceeded with url: /busca/busca/buscar/query/0/di:2026-11-02/df:2026-11-06/?1=1&q=%22interesse%20social%22%20desapropria%C3%A7%C3%A3o (Caused by ConnectTimeoutError(<HTTPSConnection(host='dioe.pr.gov.br', port=443) at 0x7da72df27530>, 'Connection to dioe.pr.gov.br timed out. (connect timeout=90)'))",
+        "\"servidão administrativa\" p0: HTTPSConnectionPool(host='dioe.pr.gov.br', port=443): Max retries exceeded with url: /busca/busca/buscar/query/0/di:2026-11-02/df:2026-11-06/?1=1&q=%22servid%C3%A3o%20administrativa%22 (Caused by ConnectTimeoutError(<HTTPSConnection(host='dioe.pr.gov.br', port=443) at 0x7da72df58170>, 'Connection to dioe.pr.gov.br timed out. (connect timeout=90)'))",
+        "\"3.365\" decreto p0: HTTPSConnectionPool(host='dioe.pr.gov.br', port=443): Max retries exceeded with url: /busca/busca/buscar/query/0/di:2026-11-02/df:2026-11-06/?1=1&q=%223.365%22%20decreto (Caused by ConnectTimeoutError(<HTTPSConnection(host='dioe.pr.gov.br', port=443) at 0x7da72df25fa0>, 'Connection to dioe.pr.gov.br timed out. (connect timeout=90)'))"
+      ]
     },
     "google_news_rss": {
-      "executado_em": "2026-11-05T21:34:51-03:00",
-      "periodo": "2026-11-02 a 2026-11-05",
+      "executado_em": "2026-11-06T07:56:50-03:00",
+      "periodo": "2026-11-03 a 2026-11-06",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
       "atos_extraidos": 0,
@@ -50,6 +51,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-05T21:34:51-03:00",
-  "total_atos": 268
+  "ultima_execucao": "2026-11-06T07:56:50-03:00",
+  "total_atos": 271
 }
