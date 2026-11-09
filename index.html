@@ -1,0 +1,985 @@
+<!doctype html>
+<!-- Gerado a partir de dashboard.html (fonte única). Para atualizar: python scripts/gerar_index.py -->
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<title>Monitor de Desapropriações</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Barioni & Macedo Advogados · decretos de desapropriação publicados em Diários Oficiais, na fase administrativa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Estilo: achromatic-ledger (taste-skill, semente 1094432228) com a marca Barioni & Macedo.
+   Shell "open plane": barra lateral de 248px no fundo da página, sem barra superior.
+   Grade: tela fluida com 40px de margem e 12 colunas de gap 20px. A 1440px a área útil é
+   1440 - 248 - 2 x 40 = 1112px; 12c + 11 x 20 = 1112 dá c = 74,33; span 8 = 734,7 e span 4 = 357,3;
+   734,7 + 20 + 357,3 = 1112, então os cartões fecham nas duas bordas. */
+:root {
+  --ground: #f5f5f7;  --surface: #ffffff;  --raised: #f2f2f4;  --active: #e8e8ed;
+  --border: #e3e3e8;  --rule: #eeeef1;     --control: #d2d2d7;
+  --text: #16263a;    --muted: #556070;    --faint: #646d7a;
+  --accent: #7c2832;  /* bordô da marca: só no dado principal e no foco */
+  --accent-tint: #f6ecee;
+  --primary: #16263a; --primary-ink: #ffffff;
+  --positive: #247b50; --negative: #b3261e;
+  --pill-neutral-bg: #ececf0; --pill-neutral-ink: #2c3a4d;
+  --pill-warning-bg: #fffbeb; --pill-warning-ink: #92400e;
+  --chart-1: var(--accent); --chart-muted: #c7cbd3; --grid: #ececf0; --axis-ink: var(--muted); --ink: var(--text);
+  --chart-span: 0.06;
+
+  --font: "Poppins", "SF Pro Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-title: 28px; --fs-section: 16px; --fs-lead: 34px; --fs-kpi: 24px; --fs-body: 14px; --fs-small: 12px;
+
+  --sidebar: 248px; --pad: 40px; --gap: 20px; --card-pad: 24px;
+  --radius-card: 16px; --radius-control: 999px; --radius-chip: 999px;  /* par suave: 16 / pílula */
+  --control-height: 36px; --nav-row: 36px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1); --t-hover: 150ms; --t-ui: 240ms;
+  color-scheme: light;
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--text); font: 400 var(--fs-body)/20px var(--font); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+svg { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.num, table, .kpi-value { font-variant-numeric: tabular-nums; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- shell ---------- */
+.app { display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); min-height: 100svh; }
+.sidebar { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; padding: 28px 16px 20px; padding-left: max(16px, env(safe-area-inset-left, 0px)); overflow: auto; border-right: 1px solid var(--border); }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 8px; }
+.brand svg { width: 34px; height: 22px; flex: none; }
+.brand b { display: block; font-size: 17px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.brand span { display: block; font-size: var(--fs-small); line-height: 16px; color: var(--muted); }
+.scope { margin: 22px 8px 0; padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.scope small { display: block; font-size: var(--fs-small); color: var(--muted); }
+.scope strong { display: block; font-weight: 500; }
+.group-label { margin: 28px 8px 8px; font-size: var(--fs-small); color: var(--faint); }
+.nav-item { display: flex; align-items: center; gap: 10px; height: var(--nav-row); margin-bottom: 2px; padding: 0 10px; border-radius: 10px; color: var(--muted); transition: background-color var(--t-hover) ease, color var(--t-hover) ease; }
+.nav-item svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.nav-item:hover { background: var(--raised); color: var(--text); }
+.nav-item[aria-current="page"] { background: var(--active); color: var(--text); }
+.sidebar .bottom { margin-top: auto; padding: 16px 8px 0; color: var(--muted); font-size: var(--fs-small); line-height: 18px; }
+.sidebar .bottom strong { color: var(--text); font-weight: 500; }
+.topbar { display: none; }
+.canvas { min-width: 0; padding: 36px var(--pad) 56px; padding-right: max(var(--pad), env(safe-area-inset-right, 0px)); }
+
+/* ---------- título ---------- */
+.title-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.title-row h1 { font-size: var(--fs-title); line-height: 34px; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+.title-row .sub { margin-top: 6px; max-width: 68ch; color: var(--muted); font-size: 15px; line-height: 22px; }
+.title-row .sub strong { color: var(--text); font-weight: 500; }
+.title-actions { display: flex; align-items: center; gap: 12px; flex: none; }
+.stamp { color: var(--faint); font-size: var(--fs-small); white-space: nowrap; }
+
+/* ---------- painéis ---------- */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.grid.top { align-items: start; }
+.span-8 { grid-column: span 8; } .span-4 { grid-column: span 4; } .span-12 { grid-column: 1 / -1; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: var(--card-pad); min-width: 0; }
+.panel > header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.panel h2 { font-size: var(--fs-section); line-height: 22px; font-weight: 600; letter-spacing: -0.005em; }
+.meta { color: var(--faint); font-size: var(--fs-small); }
+
+/* KPIs: uma faixa dividida, rótulo acima do número, o primeiro é a resposta da tela */
+.kpis { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); margin-bottom: var(--gap); }
+.kpi { padding: 20px var(--card-pad); min-width: 0; }
+.kpi + .kpi { border-left: 1px solid var(--border); }
+.kpi-label { color: var(--muted); }
+.kpi-value { margin-top: 8px; font-size: var(--fs-kpi); line-height: 30px; font-weight: 500; letter-spacing: -0.01em; }
+.kpi.lead .kpi-value { font-size: var(--fs-lead); line-height: 40px; }
+.kpi-value small { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 4px; letter-spacing: 0; }
+.delta { margin-top: 6px; font-size: var(--fs-small); color: var(--muted); }
+
+/* gráfico e lista de UFs */
+.chart { min-width: 0; }
+.uf-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; padding: 9px 0; cursor: pointer; border-radius: 0; }
+.uf-list li + li { border-top: 1px solid var(--rule); }
+.uf-list li .bar { grid-column: 1 / -1; height: 2px; margin-top: 6px; background: var(--chart-muted); }
+.uf-list li:first-child .bar { background: var(--text); }
+.uf-list li[aria-pressed="true"] span:first-child { font-weight: 600; }
+.uf-list li:hover span:first-child { text-decoration: underline; text-underline-offset: 3px; }
+.uf-list .n { color: var(--text); font-weight: 500; }
+
+/* filtros */
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 32px 0 16px; }
+.filters .spacer { flex: 1; }
+.segmented { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--active); }
+.segmented button { height: 30px; padding: 0 14px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; transition: background-color var(--t-hover) ease, color var(--t-hover) ease; }
+.segmented button:hover { color: var(--text); }
+.segmented button[aria-pressed="true"] { background: var(--surface); color: var(--text); font-weight: 500; }
+.select { height: var(--control-height); padding: 0 34px 0 14px; border: 1px solid var(--control); border-radius: var(--radius-control); background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5 6 7.5 9 4.5' fill='none' stroke='%23556070' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") right 12px center / 12px no-repeat; appearance: none; max-width: 210px; cursor: pointer; }
+.search { position: relative; flex: 0 1 300px; min-width: 200px; }
+.search input { width: 100%; height: var(--control-height); padding: 0 14px 0 38px; border: 1px solid var(--control); border-radius: var(--radius-control); background: var(--surface); }
+.search input::placeholder { color: var(--faint); }
+.search svg { position: absolute; left: 14px; top: 50%; width: 15px; height: 15px; transform: translateY(-50%); fill: none; stroke: var(--muted); stroke-width: 1.5; pointer-events: none; }
+
+/* botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: var(--control-height); padding: 0 16px; border-radius: var(--radius-control); border: 1px solid var(--control); background: var(--surface); font-weight: 500; cursor: pointer; white-space: nowrap; transition: background-color var(--t-hover) ease, transform 120ms var(--ease), opacity var(--t-hover) ease; }
+.btn:hover { background: var(--raised); }
+.btn:active { transform: scale(0.98); }
+.btn.primary { background: var(--primary); color: var(--primary-ink); border-color: transparent; }
+.btn.primary:hover { opacity: 0.88; }
+.btn.secondary { background: var(--active); border-color: transparent; }
+.btn.secondary:hover { background: var(--control); }
+.btn[aria-disabled="true"] { cursor: not-allowed; opacity: 0.6; }
+.btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* tabela de atos */
+.list-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; }
+.atos-table { table-layout: fixed; }
+.atos-table td { overflow-wrap: break-word; hyphens: manual; }
+thead th { height: 36px; padding: 0 12px; text-align: left; font-weight: 400; font-size: var(--fs-small); color: var(--muted); white-space: nowrap; border-bottom: 1px solid var(--border); }
+thead th:first-child, tbody td:first-child { padding-left: 0; }
+thead th:last-child, tbody td:last-child { padding-right: 0; }
+tbody td { padding: 14px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tbody tr { cursor: pointer; transition: background-color var(--t-hover) ease; }
+tbody tr:hover td { background: var(--raised); }
+tbody tr[aria-selected="true"] td { background: var(--active); }
+tbody tr:last-child td { border-bottom: 0; }
+td .main { display: block; font-weight: 500; }
+td .sub { display: block; margin-top: 3px; font-size: var(--fs-small); line-height: 16px; color: var(--muted); }
+td.date { white-space: nowrap; }
+.track { position: relative; display: block; height: 4px; margin-top: 8px; border-radius: 999px; background: var(--rule); overflow: hidden; }
+.track i { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 999px; }
+.dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; vertical-align: 2px; }
+.more { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+
+/* painel de detalhe */
+.detail { position: sticky; top: 24px; }
+.detail .kind { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.pill { display: inline-flex; align-items: center; height: 22px; padding: 0 10px; border-radius: 999px; font-size: var(--fs-small); font-weight: 500; background: var(--pill-neutral-bg); color: var(--pill-neutral-ink); white-space: nowrap; flex: none; }
+.pill.warn { background: var(--pill-warning-bg); color: var(--pill-warning-ink); }
+.detail h2 { margin-top: 12px; font-size: 20px; line-height: 26px; letter-spacing: -0.015em; }
+.detail .org { margin-top: 4px; color: var(--muted); }
+.detail .excerpt { margin-top: 18px; padding: 16px; border-radius: 12px; background: var(--raised); font-size: 14px; line-height: 22px; max-height: 300px; overflow: auto; }
+mark { background: var(--accent-tint); color: inherit; border-radius: 3px; padding: 0 1px; text-decoration: underline 1px var(--accent); text-underline-offset: 3px; }
+.facts { margin-top: 18px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; }
+.facts dt { color: var(--muted); }
+.facts dd { text-align: right; font-weight: 500; overflow-wrap: anywhere; }
+.clock { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.clock h3 { font-size: var(--fs-body); font-weight: 600; }
+.clock p { margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 19px; }
+.clock .track { height: 6px; margin-top: 12px; }
+.clock .ends { display: flex; justify-content: space-between; margin-top: 6px; font-size: var(--fs-small); color: var(--muted); }
+.detail .actions { display: grid; gap: 8px; margin-top: 22px; }
+.detail .actions .btn { width: 100%; }
+.detail .note { margin-top: 12px; font-size: var(--fs-small); line-height: 17px; color: var(--muted); }
+.back { display: none; }
+
+/* fontes e coleta */
+.src-table td { vertical-align: baseline; cursor: default; }
+.src-table tbody tr { cursor: default; }
+.src-table tbody tr:hover td { background: none; }
+th.n, td.n { text-align: right; }
+.loader { display: grid; gap: 14px; }
+.loader .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.loader input[type="url"] { flex: 1 1 320px; min-width: 0; height: var(--control-height); padding: 0 14px; border: 1px solid var(--control); border-radius: var(--radius-control); background: var(--surface); }
+.notice { margin-bottom: var(--gap); padding: 12px 16px; border-radius: 12px; background: var(--pill-warning-bg); color: var(--pill-warning-ink); font-size: 13px; line-height: 19px; }
+.notice.error { background: color-mix(in srgb, var(--negative) 12%, var(--surface)); color: var(--negative); }
+.empty { padding: 28px 16px; border: 1px dashed var(--control); border-radius: 12px; color: var(--muted); text-align: center; }
+.law { color: var(--muted); font-size: 13px; line-height: 20px; }
+.law + .law { margin-top: 10px; }
+.law strong { color: var(--text); font-weight: 500; }
+[hidden] { display: none !important; }
+
+/* ---------- tablet e celular ---------- */
+@media (max-width: 1180px) {
+  .detail-col { display: none; }
+  .list-col { grid-column: 1 / -1; }
+  .detail-col.open { display: block; position: fixed; inset: 0; z-index: 30; overflow: auto; background: var(--ground); padding: 16px; padding-top: max(16px, env(safe-area-inset-top, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .detail-col.open .detail { position: static; max-width: 640px; margin: 0 auto; }
+  .back { display: inline-flex; margin-bottom: 12px; }
+}
+@media (max-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .sidebar { position: fixed; inset: 0; z-index: 40; width: 100%; height: 100%; background: var(--ground); transform: translateX(-100%); transition: transform var(--t-ui) var(--ease); border-right: 0; padding-top: max(20px, env(safe-area-inset-top, 0px)); }
+  .sidebar.open { transform: none; }
+  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 52px; padding: 0 16px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); background: var(--ground); border-bottom: 1px solid var(--border); }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 21; background: var(--ground); }
+  .topbar .brand { padding: 0; }
+  .topbar .brand b { font-size: 15px; }
+  .menu-btn { width: 40px; height: 40px; padding: 0; }
+  .close-menu { display: inline-flex !important; align-self: flex-end; margin-bottom: 8px; }
+  .canvas { padding: 20px 16px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .grid > * { grid-column: 1 / -1 !important; }
+  .title-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .title-row h1 { font-size: 24px; line-height: 30px; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi + .kpi { border-left: 0; }
+  .kpi:nth-child(n + 3) { border-top: 1px solid var(--border); }
+  .kpi:nth-child(2n) { border-left: 1px solid var(--border); }
+  .kpi.lead .kpi-value { font-size: 30px; line-height: 36px; }
+  .filters { margin-top: 24px; }
+  .search { flex: 1 1 100%; }
+  .select { flex: 1 1 calc(50% - 5px); max-width: none; }
+  .segmented { width: 100%; overflow-x: auto; }
+  .segmented button { flex: 1; }
+}
+.close-menu { display: none !important; }
+@media (max-width: 640px) {
+  thead { display: none; }
+  tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  tbody tr:last-child { border-bottom: 0; }
+  tbody td { display: block; padding: 0; border: 0; }
+  .atos-table { table-layout: auto; }
+  colgroup { display: none; }
+  tbody td.ato { grid-column: 1; grid-row: 1; }
+  tbody td.date { grid-column: 2; grid-row: 1; text-align: right; width: auto; }
+  tbody td.local { grid-column: 1 / -1; width: auto; }
+  tbody td.fim { display: none; }
+  tbody td.prazo { grid-column: 1 / -1; width: auto; }
+  tbody tr:hover td, tbody tr[aria-selected="true"] td { background: none; }
+  .src-table tbody tr { grid-template-columns: minmax(0, 1fr) auto; }
+}
+.im-wrap{display:grid;gap:12px}
+.im-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);padding:var(--card-pad)}
+.im-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.im-head h3{font-size:16px;line-height:22px;font-weight:600}
+.im-head h3 small{color:var(--muted);font-weight:500;margin-left:6px;font-size:13px}
+.im-head p{color:var(--muted);font-size:13px;line-height:18px;margin-top:2px}
+.im-list{list-style:none;margin:14px 0 0;padding:0}
+.im-list li{display:grid;gap:3px;padding:12px 0;border-top:1px solid var(--border);font-size:14px;line-height:20px}
+.im-list li:first-child{margin-top:0}
+.im-list b{font-weight:600}
+.im-list a,.im-foot a{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.im-list .m{color:var(--muted);font-size:13px;line-height:18px}
+.im-foot{margin-top:10px;font-size:13px;line-height:18px;color:var(--muted)}
+.im-note{margin-top:20px;color:var(--muted);font-size:13px;line-height:19px;max-width:80ch}
+.tf{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.tf label{display:grid;gap:4px;font-size:13px;line-height:18px;color:var(--muted)}
+.tf input{font:inherit;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 10px;min-width:0}
+.tt{font-size:15px;line-height:22px;font-weight:600}
+.tprev{background:#fff;color:#111;border:1px solid var(--border);border-radius:8px;padding:28px;font-family:Georgia,"Times New Roman",serif;font-size:14px;line-height:1.55;text-align:justify;overflow-x:auto}
+.tprev h2{text-align:center;font-size:16px;margin:12px 0}
+.tprev p{margin:0 0 10px}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; } }
+</style>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar" aria-label="Navegação">
+    <button type="button" class="btn ghost close-menu" id="fecharMenu">Fechar</button>
+    <div class="brand">
+      <svg viewBox="0 0 34 22" aria-hidden="true"><path d="M2 2h5l9 18h-5z" fill="var(--accent)"/><path d="M15 20c0-5 3-8 6.5-8S28 15 28 20" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="31" cy="17.5" r="2.5" fill="var(--accent)"/></svg>
+      <div><b>barioni &amp; macedo</b><span>Advogados</span></div>
+    </div>
+    <div class="scope"><small>Monitor de</small><strong>Desapropriações</strong></div>
+    <p class="group-label">Monitor</p>
+    <nav>
+      <a class="nav-item" href="#atos" data-view="atos"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 1.75h6l3 3v9.5h-9z"/><path d="M9.5 1.75v3h3M5.75 8h4.5M5.75 10.75h4.5"/></svg>Atos publicados</a>
+      <a class="nav-item" href="#imobiliarias" data-view="imob"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 14V7L8 2.5 13.5 7v7z"/><path d="M6.5 14v-4h3v4"/></svg>Imobiliárias</a>
+      <a class="nav-item" href="#termo" data-view="termo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h6l2.5 2.5v8.5H4z"/><path d="M6 8h4M6 10.5h4"/></svg>Termo de parceria</a>
+      <a class="nav-item" href="#fontes" data-view="fontes"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 4.5V8l2.5 1.5"/></svg>Fontes e coleta</a>
+    </nav>
+    <div class="bottom">
+      <strong>Coleta automática</strong><br>Todos os dias às 06:23 e às 20:47<br><span id="ultimaColeta">Aguardando dados</span>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <div class="brand">
+        <svg viewBox="0 0 34 22" aria-hidden="true"><path d="M2 2h5l9 18h-5z" fill="var(--accent)"/><path d="M15 20c0-5 3-8 6.5-8S28 15 28 20" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="31" cy="17.5" r="2.5" fill="var(--accent)"/></svg>
+        <div><b>barioni &amp; macedo</b></div>
+      </div>
+      <button type="button" class="btn menu-btn" id="abrirMenu" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/></svg></button>
+    </header>
+
+    <main class="canvas">
+      <!-- ===================== ATOS ===================== -->
+      <section id="view-atos" aria-labelledby="t-atos">
+        <div class="title-row">
+          <div>
+            <h1 id="t-atos">Atos de desapropriação</h1>
+            <p class="sub" id="achado">Carregando os atos coletados nos Diários Oficiais.</p>
+          </div>
+          <div class="title-actions">
+            <span class="stamp" id="stamp"></span>
+            <button type="button" class="btn secondary" id="btnCsv"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.75 7.5 8 10.75l3.25-3.25M3 13.25h10"/></svg>Exportar CSV</button>
+          </div>
+        </div>
+        <div id="avisoExemplo" class="notice" hidden>Você está vendo dados de exemplo fictícios. Em <a href="#fontes"><u>Fontes e coleta</u></a>, carregue o arquivo atos.json gerado pela coleta.</div>
+        <div id="avisoErro" class="notice error" hidden></div>
+
+        <div class="kpis" aria-label="Resumo">
+          <div class="kpi lead"><div class="kpi-label">Publicados nos últimos 7 dias</div><div class="kpi-value" id="k7">0</div><div class="delta" id="k7d"></div></div>
+          <div class="kpi"><div class="kpi-label">Últimos 30 dias</div><div class="kpi-value" id="k30">0</div><div class="delta" id="k30d"></div></div>
+          <div class="kpi"><div class="kpi-label">Com urgência declarada</div><div class="kpi-value" id="kUrg">0</div><div class="delta">nos últimos 30 dias</div></div>
+          <div class="kpi"><div class="kpi-label">No Paraná em 30 dias</div><div class="kpi-value" id="kPR">0</div><div class="delta" id="kPRd"></div></div>
+        </div>
+
+        <div class="grid">
+          <section class="panel span-8" aria-labelledby="t-semanas">
+            <header><h2 id="t-semanas">Atos publicados por semana</h2><span class="meta" id="semanasMeta">semana atual em destaque</span></header>
+            <div class="chart" id="graficoSemanas"></div>
+          </section>
+          <section class="panel span-4" aria-labelledby="t-ufs">
+            <header><h2 id="t-ufs">Onde foram publicados</h2><span class="meta">por UF</span></header>
+            <ul class="uf-list" id="ufs"></ul>
+          </section>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filtros">
+          <div class="segmented" id="esferas" role="group" aria-label="Esfera"></div>
+          <label class="visually-hidden" for="fUF">UF</label><select class="select" id="fUF"></select>
+          <label class="visually-hidden" for="fMun">Município</label><select class="select" id="fMun"></select>
+          <label class="visually-hidden" for="fFim">Finalidade</label><select class="select" id="fFim"></select>
+          <label class="visually-hidden" for="fTag">Característica</label><select class="select" id="fTag"></select>
+          <label class="visually-hidden" for="fPer">Período</label><select class="select" id="fPer">
+            <option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option><option value="60">Últimos 60 dias</option><option value="0" selected>Todo o acervo</option>
+          </select>
+          <span class="spacer"></span>
+          <div class="search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.75"/><path d="m10.5 10.5 3 3"/></svg><label class="visually-hidden" for="q">Buscar no trecho</label><input type="search" id="q" placeholder="Buscar rodovia, matrícula, Sanepar"></div>
+        </div>
+
+        <div class="grid top">
+          <section class="panel span-8 list-col" aria-labelledby="t-lista">
+            <div class="list-head"><h2 id="t-lista">Atos encontrados</h2>
+              <label class="meta" for="ordem">Ordenar por <select id="ordem" class="select" style="height:30px;margin-left:6px;max-width:none">
+                <option value="data">mais recentes</option><option value="prazo">prazo mais curto</option><option value="conf">maior confiança</option></select></label></div>
+            <table class="atos-table">
+              <colgroup><col style="width:60px"><col><col style="width:22%"><col style="width:21%"><col style="width:124px"></colgroup>
+              <thead><tr><th scope="col">Publicação</th><th scope="col">Ato</th><th scope="col">Local</th><th scope="col">Finalidade</th><th scope="col">Prazo de caducidade</th></tr></thead>
+              <tbody id="lista"></tbody>
+            </table>
+            <div class="empty" id="vazio" hidden>Nenhum ato corresponde a estes filtros. Amplie o período ou limpe a busca.</div>
+            <div class="more"><span class="meta" id="faixa"></span><button type="button" class="btn" id="btnMais" hidden>Mostrar mais 40</button></div>
+          </section>
+          <aside class="span-4 detail-col" id="detailCol" aria-label="Detalhe do ato selecionado">
+            <div class="panel detail" id="detalhe"><div class="empty">Selecione um ato na lista para ler o trecho e abrir o Diário Oficial.</div></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ===================== IMOBILIÁRIAS ===================== -->
+      <section id="view-imob" aria-labelledby="t-imob" hidden>
+        <div class="title-row">
+          <div>
+            <h1 id="t-imob">Imobiliárias nos municípios</h1>
+            <p class="sub" id="imobSub">Municípios citados nos atos, com as imobiliárias da região.</p>
+          </div>
+          <div class="title-actions">
+            <button type="button" class="btn secondary" id="btnCsvIm"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.75 7.5 8 10.75l3.25-3.25M3 13.25h10"/></svg>Exportar CSV</button>
+          </div>
+        </div>
+        <div class="filters" role="group" aria-label="Filtros de imobiliárias">
+          <label class="visually-hidden" for="iUF">UF</label><select class="select" id="iUF"></select>
+          <label class="visually-hidden" for="iSt">Situação</label><select class="select" id="iSt">
+            <option value="">Todos os municípios</option><option value="com">Com imobiliária pesquisada</option><option value="sem">Ainda sem pesquisa</option></select>
+          <button type="button" class="btn ghost" id="iLimpar" hidden>Mostrar todos os municípios</button>
+          <span class="spacer"></span>
+          <div class="search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.75"/><path d="m10.5 10.5 3 3"/></svg><label class="visually-hidden" for="iQ">Buscar município ou imobiliária</label><input type="search" id="iQ" placeholder="Buscar município ou imobiliária"></div>
+        </div>
+        <div class="im-wrap" id="imobLista"></div>
+        <div class="empty" id="imobVazio" hidden>Nenhum município corresponde a estes filtros.</div>
+        <p class="im-note" id="imobNota"></p>
+      </section>
+
+      <!-- ===================== TERMO DE PARCERIA ===================== -->
+      <section id="view-termo" aria-labelledby="t-termo" hidden>
+        <div class="title-row">
+          <div>
+            <h1 id="t-termo">Termo de parceria</h1>
+            <p class="sub">Escolha a imobiliária, preencha os dados e baixe o termo pronto em Word.</p>
+          </div>
+          <div class="title-actions"><button type="button" class="btn" id="btnTermo">Gerar termo (Word)</button></div>
+        </div>
+        <div class="filters" role="group" aria-label="Imobiliária do termo">
+          <label class="visually-hidden" for="tSel">Imobiliária</label><select class="select" id="tSel"></select>
+        </div>
+        <div class="im-wrap" id="termoForm"></div>
+        <h2 class="tt" style="margin:24px 0 8px">Pré-visualização</h2>
+        <div class="tprev" id="tPrev"></div>
+        <p class="im-note">Os dados digitados ficam salvos só neste navegador e neste computador. Os campos em amarelo no termo ainda estão sem preenchimento. A minuta precisa de revisão dos advogados antes de ser assinada.</p>
+      </section>
+
+      <!-- ===================== FONTES ===================== -->
+      <section id="view-fontes" aria-labelledby="t-fontes" hidden>
+        <div class="title-row">
+          <div>
+            <h1 id="t-fontes">Fontes e coleta</h1>
+            <p class="sub" id="fontesSub">Situação de cada Diário Oficial monitorado na última execução.</p>
+          </div>
+        </div>
+        <div class="grid top">
+          <section class="panel span-8" aria-labelledby="t-src">
+            <header><h2 id="t-src">Última execução por fonte</h2><span class="meta" id="srcStamp"></span></header>
+            <table class="src-table">
+              <thead><tr><th scope="col">Fonte</th><th scope="col">Período</th><th scope="col" class="n">Atos novos</th><th scope="col" class="n">Erros</th></tr></thead>
+              <tbody id="fontesLista"></tbody>
+            </table>
+            <div class="empty" id="fontesVazio" hidden>Sem registro de coleta neste arquivo. O relatório data/meta.json aparece aqui quando os dados vêm do repositório.</div>
+          </section>
+          <section class="panel span-4" aria-labelledby="t-load">
+            <header><h2 id="t-load">Carregar outro arquivo</h2></header>
+            <div class="loader">
+              <label class="visually-hidden" for="urlJson">URL do atos.json</label>
+              <div class="row"><input type="url" id="urlJson" placeholder="https://raw.githubusercontent.com/.../data/atos.json"></div>
+              <div class="row">
+                <button type="button" class="btn primary" id="btnUrl">Carregar URL</button>
+                <label class="btn" for="arquivo">Enviar arquivo</label>
+                <input type="file" id="arquivo" accept=".json,application/json" hidden>
+                <button type="button" class="btn ghost" id="btnExemplo">Ver exemplo</button>
+              </div>
+            </div>
+          </section>
+          <section class="panel span-12" aria-labelledby="t-prazos">
+            <header><h2 id="t-prazos">Como o prazo de caducidade é contado</h2></header>
+            <p class="law"><strong>Utilidade pública, 5 anos.</strong> A desapropriação deve se efetivar por acordo ou ser ajuizada em cinco anos da expedição do decreto, sob pena de caducidade (Decreto-Lei nº 3.365/1941, art. 10).</p>
+            <p class="law"><strong>Interesse social, 2 anos.</strong> O expropriante tem dois anos, a partir da decretação, para efetivar a desapropriação (Lei nº 4.132/1962, art. 3º). Para reforma agrária, a ação deve ser proposta em dois anos da publicação do decreto (Lei Complementar nº 76/1993, art. 3º).</p>
+            <p class="law"><strong>Urgência, 120 dias.</strong> Alegada a urgência, a imissão provisória deve ser requerida em até 120 dias (Decreto-Lei nº 3.365/1941, art. 15, §2º).</p>
+            <p class="law">O monitor conta a partir da data de publicação no Diário, que pode ser posterior à expedição. Confira sempre a data do decreto no documento oficial.</p>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="assets/charts.js"></script>
+<script>
+(() => {
+  "use strict";
+  document.documentElement.lang = "pt-BR";
+  const $ = (id) => document.getElementById(id);
+  const POR_PAGINA = 40;
+  const DIA = 864e5;
+  const ESFERAS = ["Federal", "Estadual", "Municipal"];
+  const CONF = { baixa: 0, media: 1, alta: 2 };
+  const TAG = { utilidade_publica: "Utilidade pública", interesse_social: "Interesse social", necessidade_publica: "Necessidade pública",
+    servidao: "Servidão administrativa", urgencia: "Urgência", reforma_agraria: "Reforma agrária", revogacao: "Revogação",
+    retificacao: "Retificação", matricula: "Matrícula identificada", coordenadas: "Coordenadas", fonte_secundaria: "Notícia oficial" };
+  const TAGS_FILTRO = ["urgencia", "servidao", "interesse_social", "reforma_agraria", "matricula", "revogacao"];
+  const FONTES = { querido_diario: "Diários municipais (Querido Diário)", dou: "Diário Oficial da União, Seção 1", dioe_pr: "Diário Oficial do Paraná", google_news_rss: "Notícias oficiais (.gov.br)", exemplo: "Exemplo fictício" };
+
+  let dados = [], meta = null, origem = "", limite = POR_PAGINA, selId = null;
+  const f = { esfera: "", uf: "", mun: "", fim: "", tag: "", per: 0, q: "" };
+
+  const norm = (s) => (s || "").toString().normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const esc = (s) => (s ?? "").toString().replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const nf = new Intl.NumberFormat("pt-BR");
+  const hoje = () => { const d = new Date(Date.now() - 3 * 3600e3); return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())); };
+  const dataISO = (iso) => new Date(iso + "T00:00:00Z");
+  const fmtData = (iso) => { const [a, m, d] = (iso || "").split("-"); return d ? `${d}/${m}/${a}` : ""; };
+  const fmtCurta = (iso) => { const [, m, d] = (iso || "").split("-"); return d ? `${d}/${m}` : ""; };
+  const semana = ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"];
+  const ler = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const guardar = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+
+  // Prazo legal de caducidade de cada ato, contado da publicação
+  function prazo(a) {
+    if (a.tags.includes("revogacao")) return null;
+    const dois = a.tags.includes("reforma_agraria") || (a.tags.includes("interesse_social") && !a.tags.includes("utilidade_publica"));
+    const anos = dois ? 2 : 5;
+    const base = a.tags.includes("reforma_agraria") ? "LC 76/1993, art. 3º" : dois ? "Lei 4.132/1962, art. 3º" : "DL 3.365/1941, art. 10";
+    const ini = dataISO(a.data_publicacao);
+    const fim = new Date(ini); fim.setUTCFullYear(fim.getUTCFullYear() + anos);
+    const total = fim - ini, passado = Math.max(0, Math.min(total, hoje() - ini));
+    const restaDias = Math.max(0, Math.round((fim - hoje()) / DIA));
+    return { anos, base, fim: fim.toISOString().slice(0, 10), frac: passado / total, restaDias };
+  }
+  function restante(dias) {
+    if (dias <= 0) return "prazo encerrado";
+    const anos = Math.floor(dias / 365), meses = Math.floor((dias % 365) / 30.44);
+    if (anos === 0 && meses === 0) return `${dias} ${dias === 1 ? "dia" : "dias"}`;
+    const partes = [];
+    if (anos) partes.push(`${anos} ${anos === 1 ? "ano" : "anos"}`);
+    if (meses) partes.push(`${meses} ${meses === 1 ? "mês" : "meses"}`);
+    return partes.join(" e ");
+  }
+  function urgencia(a) {
+    if (!a.tags.includes("urgencia")) return null;
+    const ini = dataISO(a.data_publicacao), fim = new Date(ini.getTime() + 120 * DIA);
+    const resta = Math.round((fim - hoje()) / DIA);
+    return { fim: fim.toISOString().slice(0, 10), frac: Math.max(0, Math.min(1, (hoje() - ini) / (120 * DIA))), resta };
+  }
+  const numeroAto = (a) => !a.numero_ato ? "sem número identificado" : a.numero_ato.startsWith("s/nº") ? a.numero_ato : `nº ${a.numero_ato}`;
+  const tipo = (a) => (a.tipo_ato && a.tipo_ato !== "Não identificado") ? a.tipo_ato : "Ato";
+  const orgaoCurto = (a) => { const o = a.orgao_emissor || a.esfera; return /^Prefeitura Municipal de /.test(o) ? "Prefeitura Municipal" : o; };
+  const local = (a) => a.municipio ? `${a.municipio}, ${a.uf}` : (a.uf === "BR" ? "Âmbito nacional" : a.uf);
+
+  function destacar(texto, termos) {
+    const seguro = esc(texto);
+    if (!termos.length) return seguro;
+    const base = norm(seguro), marcas = [];
+    for (const t of termos) { let i = base.indexOf(t); while (i !== -1) { marcas.push([i, i + t.length]); i = base.indexOf(t, i + t.length); } }
+    marcas.sort((x, y) => x[0] - y[0]);
+    let out = "", pos = 0;
+    for (const [i, j] of marcas) {
+      if (i < pos || seguro.lastIndexOf("&", i) > seguro.lastIndexOf(";", i)) continue;
+      out += seguro.slice(pos, i) + "<mark>" + seguro.slice(i, j) + "</mark>"; pos = j;
+    }
+    return out + seguro.slice(pos);
+  }
+
+  // ---------- dados ----------
+  function preparar(lista) {
+    if (!Array.isArray(lista)) throw new Error("o arquivo não contém uma lista de atos");
+    const obrig = ["id", "data_publicacao", "esfera", "uf", "resumo_contexto", "url_fonte"];
+    const ok = lista.filter((a) => a && obrig.every((k) => k in a));
+    if (lista.length && !ok.length) throw new Error("nenhum registro tem os campos do Monitor");
+    return ok.map((a) => {
+      const r = { ...a, tags: a.tags || [], finalidades: a.finalidades || [], matriculas: a.matriculas || [], areas: a.areas || [], confianca: a.confianca || "baixa" };
+      r._busca = norm([r.resumo_contexto, r.orgao_emissor, r.numero_ato, r.municipio, r.tipo_ato, r.matriculas.join(" "), r.finalidades.join(" ")].join(" "));
+      r._prazo = prazo(r);
+      return r;
+    });
+  }
+  function aplicar(lista, rotulo, exemplo) {
+    dados = preparar(lista); origem = rotulo; selId = null; limite = POR_PAGINA;
+    $("avisoExemplo").hidden = !exemplo; $("avisoErro").hidden = true;
+    opcoes(); render(); renderFontes(); renderImob();
+  }
+  function erro(msg) { const e = $("avisoErro"); e.textContent = msg; e.hidden = false; }
+  async function json(url) { if (window.__EMB && url in window.__EMB) return window.__EMB[url]; const r = await fetch(url, { cache: "no-cache" }); if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }
+  async function carregarURL(url) {
+    try {
+      const lista = await json(url);
+      try { meta = await json(url.replace(/atos\.json(\?.*)?$/, "meta.json")); } catch (e) { meta = null; }
+      aplicar(lista, url.replace(/^https?:\/\//, ""), false); guardar("monitor_url", url); return true;
+    } catch (e) {
+      erro(`Não foi possível ler ${url} (${e.message}). Dentro do Claude, endereços externos são bloqueados: use Enviar arquivo.`);
+      return false;
+    }
+  }
+  async function carregarExemplo() { try { meta = null; aplicar(await json("data/exemplo.json"), "exemplo fictício", true); } catch (e) { erro("Arquivo de exemplo indisponível."); } }
+  async function iniciar() {
+    const p = new URLSearchParams(location.search).get("dados");
+    if (p && await carregarURL(p)) return;
+    try {
+      const lista = await json("data/atos.json");
+      if (Array.isArray(lista) && lista.length) { try { meta = await json("data/meta.json"); } catch (e) { meta = null; } aplicar(lista, "repositório", false); return; }
+    } catch (e) { /* segue para as alternativas */ }
+    const salva = ler("monitor_url");
+    if (salva) { $("urlJson").value = salva; if (await carregarURL(salva)) return; }
+    await carregarExemplo();
+  }
+
+  // ---------- filtros ----------
+  function opcoes() {
+    $("esferas").innerHTML = ["", ...ESFERAS].map((e) => `<button type="button" data-v="${e}" aria-pressed="${f.esfera === e}">${e || "Todas"}</button>`).join("");
+    const ufs = [...new Set(dados.map((a) => a.uf))].sort();
+    $("fUF").innerHTML = `<option value="">Todas as UFs</option>` + ufs.map((u) => `<option value="${esc(u)}">${u === "BR" ? "Âmbito nacional" : esc(u)}</option>`).join("");
+    if (!ufs.includes(f.uf)) f.uf = ""; $("fUF").value = f.uf;
+    municipios();
+    const fins = [...new Set(dados.flatMap((a) => a.finalidades))].sort((x, y) => x.localeCompare(y, "pt-BR"));
+    $("fFim").innerHTML = `<option value="">Todas as finalidades</option>` + fins.map((x) => `<option>${esc(x)}</option>`).join("");
+    if (!fins.includes(f.fim)) f.fim = ""; $("fFim").value = f.fim;
+    $("fTag").innerHTML = `<option value="">Todas as características</option>` + TAGS_FILTRO.map((t) => `<option value="${t}">${TAG[t]}</option>`).join("");
+    $("fTag").value = f.tag;
+  }
+  function municipios() {
+    const muns = [...new Set(dados.filter((a) => !f.uf || a.uf === f.uf).map((a) => a.municipio).filter(Boolean))].sort((x, y) => x.localeCompare(y, "pt-BR"));
+    $("fMun").innerHTML = `<option value="">Todos os municípios</option>` + muns.map((m) => `<option>${esc(m)}</option>`).join("");
+    if (!muns.includes(f.mun)) f.mun = ""; $("fMun").value = f.mun;
+  }
+  const termos = () => norm(f.q).split(/\s+/).filter((t) => t.length > 1);
+  function filtrar({ ignorarPeriodo = false } = {}) {
+    const ts = termos(), corte = f.per ? new Date(hoje() - (f.per - 1) * DIA).toISOString().slice(0, 10) : "";
+    return dados.filter((a) =>
+      (!f.esfera || a.esfera === f.esfera) && (!f.uf || a.uf === f.uf) && (!f.mun || a.municipio === f.mun) &&
+      (!f.fim || a.finalidades.includes(f.fim)) &&
+      (!f.tag || (f.tag === "matricula" ? a.matriculas.length > 0 : a.tags.includes(f.tag))) &&
+      (ignorarPeriodo || !corte || a.data_publicacao >= corte) &&
+      ts.every((t) => a._busca.includes(t)));
+  }
+  function ordenar(l) {
+    const porData = (x, y) => y.data_publicacao.localeCompare(x.data_publicacao) || (y.score || 0) - (x.score || 0);
+    const m = $("ordem").value;
+    if (m === "prazo") return l.sort((x, y) => (x._prazo ? x._prazo.restaDias : 1e9) - (y._prazo ? y._prazo.restaDias : 1e9) || porData(x, y));
+    if (m === "conf") return l.sort((x, y) => (CONF[y.confianca] - CONF[x.confianca]) || porData(x, y));
+    return l.sort(porData);
+  }
+
+  // ---------- render ----------
+  function contar(lista, de, ate) { return lista.filter((a) => a.data_publicacao >= de && a.data_publicacao <= ate).length; }
+  function iso(d) { return d.toISOString().slice(0, 10); }
+  function sinal(n) { return n > 0 ? `+${nf.format(n)}` : n < 0 ? `−${nf.format(-n)}` : "0"; }
+
+  function render() {
+    const h = hoje(), d0 = iso(h);
+    const i7 = iso(new Date(h - 6 * DIA)), i14 = iso(new Date(h - 13 * DIA)), f14 = iso(new Date(h - 7 * DIA));
+    const i30 = iso(new Date(h - 29 * DIA)), i60 = iso(new Date(h - 59 * DIA)), f60 = iso(new Date(h - 30 * DIA));
+    const n7 = contar(dados, i7, d0), n7a = contar(dados, i14, f14), n30 = contar(dados, i30, d0), n30a = contar(dados, i60, f60);
+    const recentes = dados.filter((a) => a.data_publicacao >= i30);
+    const urg = recentes.filter((a) => a.tags.includes("urgencia")).length;
+    const pr = recentes.filter((a) => a.uf === "PR").length;
+    const prMun = new Set(recentes.filter((a) => a.uf === "PR" && a.municipio).map((a) => a.municipio)).size;
+    $("k7").textContent = nf.format(n7);
+    $("k7d").textContent = `${sinal(n7 - n7a)} sobre os 7 dias anteriores`;
+    $("k30").textContent = nf.format(n30);
+    $("k30d").textContent = `${sinal(n30 - n30a)} sobre os 30 dias anteriores`;
+    $("kUrg").textContent = nf.format(urg);
+    $("kPR").textContent = nf.format(pr);
+    $("kPRd").textContent = prMun ? `em ${prMun} ${prMun === 1 ? "município" : "municípios"}` : "nenhum município identificado";
+
+    // achado: a frase sob o título
+    const ult = dados.reduce((m, a) => (a.data_publicacao > m ? a.data_publicacao : m), "");
+    const urg7 = dados.filter((a) => a.data_publicacao >= i7 && a.tags.includes("urgencia")).length;
+    const pr7 = dados.filter((a) => a.data_publicacao >= i7 && a.uf === "PR").length;
+    $("achado").innerHTML = n7
+      ? `<strong>${nf.format(n7)} ${n7 === 1 ? "ato publicado" : "atos publicados"} nos últimos 7 dias</strong>, ${nf.format(urg7)} com urgência declarada e ${nf.format(pr7)} no Paraná.`
+      : dados.length ? `Nenhum ato novo nos últimos 7 dias. O mais recente é de ${fmtData(ult)}.` : "Nenhum ato carregado.";
+    const exec = meta && meta.ultima_execucao;
+    $("stamp").textContent = exec ? `Coletado em ${fmtData(exec.slice(0, 10))} às ${exec.slice(11, 16)}` : `Fonte: ${origem}`;
+    $("ultimaColeta").textContent = exec ? `Última: ${fmtData(exec.slice(0, 10))}, ${exec.slice(11, 16)}` : `Fonte: ${origem}`;
+
+    semanas(filtrar({ ignorarPeriodo: true }));
+    ufs(filtrar());
+    lista();
+  }
+
+  function semanas(base) {
+    // 10 semanas de segunda a domingo; a última é a semana corrente
+    const h = hoje(), dow = (h.getUTCDay() + 6) % 7, seg = new Date(h - dow * DIA);
+    const labels = [], values = [];
+    for (let k = 9; k >= 0; k--) {
+      const ini = new Date(seg - k * 7 * DIA), fim = new Date(ini.getTime() + 6 * DIA);
+      labels.push(k === 0 ? "Esta semana" : fmtCurta(iso(ini)));
+      values.push(contar(base, iso(ini), iso(fim)));
+    }
+    const el = $("graficoSemanas"); el.innerHTML = "";
+    if (window.Charts) Charts.bars(el, { labels, values, highlight: 9, height: 262, format: (v) => `${nf.format(v)} ${v === 1 ? "ato" : "atos"}`, tickFormat: (v) => nf.format(v), xAt: [0, 2, 4, 6, 8, 9] });
+    const total = values.reduce((s, v) => s + v, 0);
+    $("semanasMeta").textContent = `${nf.format(total)} em 10 semanas · semana atual em bordô`;
+  }
+
+  function ufs(base) {
+    const cont = {}; base.forEach((a) => { cont[a.uf] = (cont[a.uf] || 0) + 1; });
+    const top = Object.entries(cont).sort((x, y) => y[1] - x[1]).slice(0, 6), max = top.length ? top[0][1] : 1;
+    $("ufs").innerHTML = top.length ? top.map(([uf, n]) =>
+      `<li tabindex="0" role="button" data-uf="${esc(uf)}" aria-pressed="${f.uf === uf}"><span>${uf === "BR" ? "Âmbito nacional" : esc(uf)}</span><span class="n num">${nf.format(n)}</span><i class="bar" style="width:${(n / max) * 100}%"></i></li>`).join("")
+      : `<li><div class="empty">Sem atos neste filtro.</div></li>`;
+  }
+
+  function lista() {
+    const l = ordenar(filtrar()), ts = termos();
+    $("t-lista").textContent = l.length === dados.length ? `${nf.format(l.length)} atos` : `${nf.format(l.length)} de ${nf.format(dados.length)} atos`;
+    const vis = l.slice(0, limite);
+    $("vazio").hidden = l.length > 0;
+    $("lista").innerHTML = vis.map((a) => {
+      const p = a._prazo, dia = semana[dataISO(a.data_publicacao).getUTCDay()];
+      const prazoTxt = p ? `caduca em ${fmtData(p.fim)}` : "ato revogatório";
+      return `<tr tabindex="0" data-id="${esc(a.id)}" aria-selected="${a.id === selId}">
+        <td class="date num"><span class="main">${fmtCurta(a.data_publicacao)}</span><span class="sub">${dia}</span></td>
+        <td class="ato"><span class="main">${a.tags.includes("urgencia") ? '<span class="dot" title="Urgência declarada"></span>' : ""}${esc(tipo(a))} ${esc(numeroAto(a))}</span><span class="sub">${destacar(orgaoCurto(a), ts)}</span></td>
+        <td class="local"><span class="main">${destacar(local(a), ts)}</span><span class="sub">${esc(a.esfera)}</span></td>
+        <td class="fim"><span class="main" style="font-weight:400">${esc(a.finalidades[0] || "Não informada")}</span>${a.finalidades.length > 1 ? `<span class="sub">e mais ${a.finalidades.length - 1}</span>` : ""}</td>
+        <td class="prazo"><span class="sub" style="margin-top:0">${prazoTxt}</span>${p ? `<span class="track" aria-hidden="true"><i style="width:${Math.max(2, p.frac * 100)}%"></i></span>` : ""}</td>
+      </tr>`;
+    }).join("");
+    $("faixa").textContent = l.length ? `1 a ${nf.format(vis.length)} de ${nf.format(l.length)}` : "";
+    $("btnMais").hidden = l.length <= limite;
+    if (!selId && vis.length && matchMedia("(min-width: 1181px)").matches) { selId = vis[0].id; marcarSel(); }
+    detalhe();
+  }
+  function marcarSel() { document.querySelectorAll("#lista tr").forEach((tr) => tr.setAttribute("aria-selected", tr.dataset.id === selId)); }
+
+  function detalhe() {
+    const a = dados.find((x) => x.id === selId), box = $("detalhe");
+    if (!a) { box.innerHTML = `<div class="empty">Selecione um ato na lista para ler o trecho e abrir o Diário Oficial.</div>`; return; }
+    const ts = termos(), p = a._prazo, u = urgencia(a), fict = a.tags.includes("exemplo_ficticio");
+    const tags = a.tags.filter((t) => TAG[t] && !["utilidade_publica", "matricula"].includes(t));
+    const linha = (k, v) => v ? `<dt>${k}</dt><dd>${v}</dd>` : "";
+    box.innerHTML = `
+      <button type="button" class="btn back" id="voltar">Voltar à lista</button>
+      <div class="kind"><span class="pill">${esc(a.esfera)}</span>${tags.map((t) => `<span class="pill${t === "urgencia" || t === "revogacao" || t === "fonte_secundaria" ? " warn" : ""}">${esc(TAG[t])}</span>`).join("")}</div>
+      <h2>${esc(tipo(a))} ${esc(numeroAto(a))}</h2>
+      <p class="org">${esc(a.orgao_emissor || "")} · ${esc(local(a))}</p>
+      <div class="excerpt">${destacar(a.resumo_contexto, ts)}</div>
+      <dl class="facts">
+        ${linha("Publicado em", fmtData(a.data_publicacao))}
+        ${linha("Finalidade", esc(a.finalidades.join(", ")))}
+        ${linha("Matrícula", esc(a.matriculas.join(", ")))}
+        ${linha("Área", esc(a.areas.join(", ")))}
+        ${linha("Fonte", esc(FONTES[a.fonte] || a.fonte || ""))}
+        ${linha("Confiança da extração", { alta: "Alta", media: "Média", baixa: "Baixa" }[a.confianca])}
+      </dl>
+      ${p ? `<div class="clock"><h3>Prazo de caducidade: ${p.anos} anos</h3>
+        <p>Restam ${restante(p.restaDias)} para acordo ou ajuizamento (${esc(p.base)}), contados da publicação.</p>
+        <span class="track" aria-hidden="true"><i style="width:${Math.max(1.5, p.frac * 100)}%"></i></span>
+        <div class="ends num"><span>${fmtData(a.data_publicacao)}</span><span>${fmtData(p.fim)}</span></div></div>` : ""}
+      ${u ? `<div class="clock"><h3>Urgência: imissão em 120 dias</h3>
+        <p>${u.resta > 0 ? `O expropriante tem até ${fmtData(u.fim)} para requerer a imissão provisória (DL 3.365/1941, art. 15, §2º). Restam ${u.resta} dias.` : `O prazo de 120 dias para requerer a imissão provisória terminou em ${fmtData(u.fim)}.`}</p>
+        <span class="track" aria-hidden="true"><i style="width:${Math.max(1.5, u.frac * 100)}%"></i></span></div>` : ""}
+      <div class="actions">
+        ${fict ? `<span class="btn primary" aria-disabled="true">Documento fictício</span>`
+          : `<a class="btn primary" href="${esc(a.url_fonte)}" target="_blank" rel="noopener noreferrer">${a.tipo_ato === "Notícia oficial" ? "Abrir notícia oficial" : "Abrir no Diário Oficial"}<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5h6.5V10M12.5 3.5 4 12"/></svg></a>`}
+        <button type="button" class="btn" id="copiar">Copiar referência</button>
+        ${a.municipio ? '<button type="button" class="btn" id="verImob">Imobiliárias da região</button>' : ""}
+      </div>
+      <p class="note">${a.fonte === "dioe_pr" ? "O texto do Diário do Paraná vem de PDF em duas colunas: confira o número do decreto na página aberta." : "Extração automática por expressões regulares. Confira o ato no documento oficial antes de qualquer providência."}</p>`;
+    $("voltar").addEventListener("click", fecharDetalhe);
+    const vi = $("verImob"); if (vi) vi.addEventListener("click", () => { fi.keys = a.municipio.split(/\s+e\s+/); fi.uf = ""; fi.st = ""; fi.q = ""; location.hash = "#imobiliarias"; });
+    $("copiar").addEventListener("click", async (ev) => {
+      const txt = `${tipo(a)} ${numeroAto(a)} (${a.orgao_emissor || a.esfera}, ${local(a)}), publicado em ${fmtData(a.data_publicacao)}. Fonte: ${a.url_fonte}`;
+      try { await navigator.clipboard.writeText(txt); ev.target.textContent = "Referência copiada"; }
+      catch (e) { ev.target.textContent = "Não foi possível copiar"; }
+      setTimeout(() => { ev.target.textContent = "Copiar referência"; }, 2000);
+    });
+  }
+  function abrirDetalhe() { if (!matchMedia("(min-width: 1181px)").matches) { $("detailCol").classList.add("open"); $("voltar") && $("voltar").focus(); } }
+  function fecharDetalhe() { $("detailCol").classList.remove("open"); const tr = document.querySelector(`#lista tr[data-id="${CSS.escape(selId || "")}"]`); tr && tr.focus(); }
+
+  // ---------- fontes ----------
+  function renderFontes() {
+    const fs = meta && meta.fontes ? Object.entries(meta.fontes) : [];
+    $("fontesVazio").hidden = fs.length > 0;
+    $("fontesLista").innerHTML = fs.map(([k, v]) => `<tr><td><span class="main">${esc(FONTES[k] || k)}</span><span class="sub">${v.executado_em ? `${fmtData(v.executado_em.slice(0, 10))} às ${v.executado_em.slice(11, 16)}` : ""}${v.modo ? ` · modo ${esc(v.modo)}` : ""}</span></td>
+      <td><span class="main" style="font-weight:400">${esc((v.periodo || "").split(" a ").map(fmtData).join(" a "))}</span></td>
+      <td class="n num"><span class="main">${nf.format(v.novos ?? 0)}</span><span class="sub">${nf.format(v.atos_extraidos ?? 0)} extraídos</span></td>
+      <td class="n num"><span class="main" style="${(v.erros || []).length ? "color:var(--negative)" : ""}">${nf.format((v.erros || []).length)}</span></td></tr>`).join("");
+    $("srcStamp").textContent = meta && meta.ultima_execucao ? `${nf.format(meta.total_atos || dados.length)} atos no acervo` : "";
+    $("fontesSub").textContent = `Arquivo em uso: ${origem}. Coleta automática todos os dias às 06:23 e às 20:47 (horário de Brasília).`;
+  }
+
+  // ---------- CSV ----------
+  async function csv() {
+    const l = ordenar(filtrar()), cols = ["data_publicacao", "esfera", "uf", "municipio", "orgao_emissor", "tipo_ato", "numero_ato", "finalidades", "matriculas", "confianca", "url_fonte", "resumo_contexto"];
+    const q = (v) => `"${String(Array.isArray(v) ? v.join("; ") : v ?? "").replace(/"/g, '""')}"`;
+    const txt = "﻿" + [cols.join(";"), ...l.map((a) => cols.map((c) => q(a[c])).join(";"))].join("\r\n");
+    const nome = `atos-desapropriacao-${iso(hoje())}.csv`;
+    // Dentro do Claude o arquivo passa pelo recurso de downloads; no GitHub Pages, por um link comum.
+    const dl = window.claude && window.claude.use ? await window.claude.use("downloads").catch(() => null) : null;
+    if (dl) { try { await dl.save({ filename: nome, data: txt }); } catch (e) { /* o visitante recusou ou o recurso não está disponível */ } return; }
+    const url = URL.createObjectURL(new Blob([txt], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a"); link.href = url; link.download = nome;
+    document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  // ---------- navegação ----------
+  function rota() {
+    const v = location.hash === "#fontes" ? "fontes" : location.hash === "#imobiliarias" ? "imob" : location.hash === "#termo" ? "termo" : "atos";
+    $("view-atos").hidden = v !== "atos"; $("view-fontes").hidden = v !== "fontes"; $("view-imob").hidden = v !== "imob"; $("view-termo").hidden = v !== "termo"; if (v === "imob") renderImob(); if (v === "termo") renderTermo();
+    document.querySelectorAll(".nav-item").forEach((n) => { if (n.dataset.view === v) n.setAttribute("aria-current", "page"); else n.removeAttribute("aria-current"); });
+    menu(false);
+  }
+  function menu(abrir) { $("sidebar").classList.toggle("open", abrir); $("abrirMenu").setAttribute("aria-expanded", abrir); }
+
+  // ---------- imobiliárias ----------
+  let imob = { municipios: {} };
+  const fi = { uf: "", st: "", q: "", keys: null };
+  const urlOk = (u) => (/^https?:\/\//i.test(u || "") ? u : "");
+  const telHref = (t) => "tel:+55" + String(t).replace(/\D/g, "");
+  const mapsUrl = (m, uf) => "https://www.google.com/maps/search/" + encodeURIComponent(`imobiliária em ${m} ${uf}`);
+  async function carregarImob() { try { imob = await json("data/imobiliarias.json"); } catch (e) { imob = { municipios: {} }; } renderImob(); if (location.hash === "#termo") renderTermo(); }
+  function municipiosImob() {
+    const mapa = new Map();
+    dados.forEach((a) => {
+      if (!a.municipio) return;
+      a.municipio.split(/\s+e\s+/).forEach((m) => {
+        const k = `${m}|${a.uf}`, x = mapa.get(k) || { m, uf: a.uf, n: 0, ult: "" };
+        x.n++; if (a.data_publicacao > x.ult) x.ult = a.data_publicacao; mapa.set(k, x);
+      });
+    });
+    return [...mapa.values()].map((x) => ({ ...x, reg: (imob.municipios || {})[`${x.m}|${x.uf}`] || null }))
+      .sort((x, y) => (y.uf === "PR") - (x.uf === "PR") || y.n - x.n || x.m.localeCompare(y.m, "pt-BR"));
+  }
+  function renderImob() {
+    if (!$("imobLista")) return;
+    const todos = municipiosImob(), ufsL = [...new Set(todos.map((x) => x.uf))].sort();
+    $("iUF").innerHTML = `<option value="">Todas as UFs</option>` + ufsL.map((u) => `<option value="${esc(u)}">${esc(u)}</option>`).join("");
+    $("iUF").value = fi.uf; $("iSt").value = fi.st;
+    if (document.activeElement !== $("iQ")) $("iQ").value = fi.q;
+    $("iLimpar").hidden = !fi.keys;
+    const q = norm(fi.q).trim();
+    const l = todos.filter((x) => (!fi.keys || fi.keys.includes(x.m)) && (!fi.uf || x.uf === fi.uf) &&
+      (!fi.st || (fi.st === "com" ? x.reg && x.reg.imobiliarias.length : !(x.reg && x.reg.imobiliarias.length))) &&
+      (!q || norm([x.m, x.uf, ...(x.reg ? x.reg.imobiliarias.map((i) => i.nome) : [])].join(" ")).includes(q)));
+    const com = todos.filter((x) => x.reg && x.reg.imobiliarias.length).length;
+    $("imobSub").innerHTML = todos.length ? `<strong>${nf.format(com)} de ${nf.format(todos.length)} municípios</strong> citados nos atos já têm imobiliárias pesquisadas.` : "Carregue os atos para ver os municípios.";
+    $("imobVazio").hidden = l.length > 0;
+    $("imobLista").innerHTML = l.map((x) => {
+      const im = x.reg ? x.reg.imobiliarias : [];
+      const itens = im.map((i, ix) => {
+        const site = urlOk(i.site), fonte = urlOk(i.fonte);
+        const tels = (i.telefones || []).map((t) => `<a href="${esc(telHref(t))}">${esc(t)}</a>`).join(" · ");
+        return `<li><span><b>${site ? `<a href="${esc(site)}" target="_blank" rel="noopener noreferrer">${esc(i.nome)}</a>` : esc(i.nome)}</b>${i.creci ? ` <span class="m">CRECI ${esc(i.creci)}</span>` : ""}</span>
+          <span>${tels || '<span class="m">Telefone não confirmado</span>'}</span>
+          ${i.endereco ? `<span class="m">${esc(i.endereco)}</span>` : ""}${i.obs ? `<span class="m">${esc(i.obs)}</span>` : ""}
+          ${fonte ? `<span class="m"><a href="${esc(fonte)}" target="_blank" rel="noopener noreferrer">Fonte da informação</a></span>` : ""}
+          <span class="m"><a href="#termo" data-termo="${esc(x.m + "|" + x.uf)}#${ix}">Gerar termo de parceria</a></span></li>`;
+      }).join("");
+      return `<article class="im-card"><div class="im-head"><div><h3>${esc(x.m)}<small>${esc(x.uf)}</small></h3>
+        <p>${x.n} ${x.n === 1 ? "ato" : "atos"} · último em ${fmtData(x.ult)}${x.reg && x.reg.verificado_em ? ` · pesquisado em ${fmtData(x.reg.verificado_em)}` : ""}</p></div>
+        <span class="pill${im.length ? "" : " warn"}">${im.length ? `${im.length} ${im.length === 1 ? "imobiliária" : "imobiliárias"}` : "Ainda sem pesquisa"}</span></div>
+        ${im.length ? `<ul class="im-list">${itens}</ul>` : ""}
+        <p class="im-foot"><a href="${esc(mapsUrl(x.m, x.uf))}" target="_blank" rel="noopener noreferrer">Buscar imobiliárias de ${esc(x.m)} no Google Maps</a></p></article>`;
+    }).join("");
+    $("imobNota").textContent = imob.criterio || "";
+  }
+  function baixar(nome, txt, mime) {
+    const url = URL.createObjectURL(new Blob([txt], { type: mime || "text/csv;charset=utf-8" }));
+    const link = document.createElement("a"); link.href = url; link.download = nome;
+    document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+  async function csvImob() {
+    const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`, cols = ["municipio", "uf", "atos", "ultimo_ato", "imobiliaria", "site", "telefones", "endereco", "creci", "fonte"], linhas = [];
+    municipiosImob().forEach((x) => {
+      const im = x.reg ? x.reg.imobiliarias : [];
+      (im.length ? im : [{}]).forEach((i) => linhas.push([x.m, x.uf, x.n, x.ult, i.nome, i.site, (i.telefones || []).join(" / "), i.endereco, i.creci, i.fonte].map(q).join(";")));
+    });
+    const txt = "\ufeff" + [cols.join(";"), ...linhas].join("\r\n"), nome = `imobiliarias-${iso(hoje())}.csv`;
+    const dl = window.claude && window.claude.use ? await window.claude.use("downloads").catch(() => null) : null;
+    if (dl) { try { await dl.save({ filename: nome, data: txt }); } catch (e) {} return; }
+    baixar(nome, txt);
+  }
+
+  // ---------- termo de parceria ----------
+  const TF = [
+    ["Escritório (contratante): dados fixos, preenchidos uma vez", [["e_razao", "Razão social do escritório"], ["e_cnpj", "CNPJ"], ["e_oab", "Registro da sociedade na OAB"], ["e_end", "Endereço completo"], ["e_rep", "Representante (nome)"], ["e_repdoc", "OAB ou CPF do representante"]]],
+    ["Imobiliária (parceira)", [["i_razao", "Razão social"], ["i_cnpj", "CNPJ"], ["i_creci", "CRECI da pessoa jurídica"], ["i_end", "Endereço completo"], ["i_rep", "Representante legal (nome)"], ["i_repcargo", "Cargo do representante"], ["i_repcpf", "CPF do representante"], ["i_tel", "Telefone"], ["i_email", "E-mail"]]],
+    ["Contato na imobiliária", [["c_nome", "Nome do corretor com quem falamos"], ["c_creci", "CRECI do corretor"], ["c_tel", "Telefone do corretor"], ["c_email", "E-mail do corretor"]]],
+    ["Condições do termo", [["t_data", "Data do termo", "date"], ["t_cidade", "Cidade da assinatura"], ["t_prazo", "Prazo (meses)", "number"], ["t_foro", "Foro (comarca)"]]]
+  ];
+  const E_KEYS = ["e_razao", "e_cnpj", "e_oab", "e_end", "e_rep", "e_repdoc"];
+  let termoSel = "manual"; const tv = {};
+  const lsGet = (k) => { try { return JSON.parse(localStorage.getItem(k) || "null"); } catch (e) { return null; } };
+  const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  function opcoesTermo() {
+    const l = [];
+    Object.entries(imob.municipios || {}).forEach(([k, r]) => (r.imobiliarias || []).forEach((i, ix) => l.push({ id: `${k}#${ix}`, i, rot: `${i.nome} — ${k.replace("|", "/")}` })));
+    return l;
+  }
+  function aplicarSel() {
+    const o = opcoesTermo().find((x) => x.id === termoSel), salvo = lsGet("termo_imob_" + termoSel) || {}, esc0 = lsGet("termo_escritorio") || {};
+    const base = o ? { i_razao: o.i.nome, i_creci: o.i.creci || "", i_end: o.i.endereco || "", i_tel: (o.i.telefones || []).join(" / ") } : {};
+    TF.slice(1).forEach(([, cs]) => cs.forEach(([id]) => { tv[id] = salvo[id] != null ? salvo[id] : (base[id] || ""); }));
+    if (!salvo.t_data) tv.t_data = iso(hoje());
+    if (salvo.t_prazo == null) tv.t_prazo = "12";
+    E_KEYS.forEach((id) => { tv[id] = esc0[id] || ""; });
+  }
+  function salvarTermo() {
+    lsSet("termo_escritorio", Object.fromEntries(E_KEYS.map((k) => [k, tv[k] || ""])));
+    lsSet("termo_imob_" + termoSel, Object.fromEntries(Object.keys(tv).filter((k) => !E_KEYS.includes(k)).map((k) => [k, tv[k]])));
+  }
+  const BL = '<span style="background:#fff3b0">[a preencher]</span>';
+  const ff = (x) => (x && String(x).trim() ? `<b>${esc(x)}</b>` : BL);
+  function dataExt(s) { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? `<b>${new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })}</b>` : BL; }
+  function termoHtml(v) {
+    const p = (t) => `<p>${t}</p>`, h = (t) => `<p><b>${t}</b></p>`;
+    return [
+      `<p style="border:1px solid #b00;padding:8px;font-size:90%"><b>NOTA DE REVISÃO (remover antes de assinar).</b> Minuta-base para revisão dos advogados responsáveis. Foi redigida para não configurar captação de clientela nem participação da parceira em honorários (Estatuto da Advocacia, Lei 8.906/1994, art. 34, incisos III e IV, e normas de publicidade da OAB, a confirmar). As cláusulas 1ª e 4ª merecem atenção especial.</p>`,
+      `<h2>TERMO DE PARCERIA E CONFIDENCIALIDADE</h2>`,
+      p(`Pelo presente instrumento particular, de um lado ${ff(v.e_razao)}, sociedade de advogados inscrita no CNPJ sob o nº ${ff(v.e_cnpj)}, com registro na OAB sob o nº ${ff(v.e_oab)}, com sede em ${ff(v.e_end)}, neste ato representada por ${ff(v.e_rep)} (${ff(v.e_repdoc)}), doravante denominada <b>ESCRITÓRIO</b>; e, de outro lado, ${ff(v.i_razao)}, pessoa jurídica inscrita no CNPJ sob o nº ${ff(v.i_cnpj)}, registrada no CRECI sob o nº ${ff(v.i_creci)}, com sede em ${ff(v.i_end)}, neste ato representada por ${ff(v.i_rep)}, ${ff(v.i_repcargo)}, CPF nº ${ff(v.i_repcpf)}, doravante denominada <b>PARCEIRA</b>, resolvem firmar o presente Termo, mediante as cláusulas seguintes.`),
+      h("CLÁUSULA 1ª – DO OBJETO"),
+      p("1.1. O presente Termo estabelece parceria institucional, não exclusiva e sem vínculo de representação, pela qual a PARCEIRA, no exercício regular de sua atividade de intermediação imobiliária, poderá informar a proprietários e interessados que a procurem espontaneamente a existência do ESCRITÓRIO como opção de assessoria jurídica especializada em desapropriações, preservada a livre escolha do advogado pelo interessado."),
+      p("1.2. A PARCEIRA não captará nem angariará clientes ou causas para o ESCRITÓRIO, não realizará abordagem ativa de proprietários em nome dele e não praticará atos privativos da advocacia."),
+      h("CLÁUSULA 2ª – DAS OBRIGAÇÕES DA PARCEIRA"),
+      p("2.1. Manter regular sua inscrição e a de seus corretores perante o CRECI e demais órgãos competentes."),
+      p("2.2. Atuar com ética, boa-fé e transparência, sem prometer resultados, valores de indenização ou prazos em nome do ESCRITÓRIO."),
+      p("2.3. Não utilizar nome, marca ou logotipo do ESCRITÓRIO em publicidade sem aprovação prévia e escrita."),
+      p(`2.4. Indicar como interlocutor o corretor ${ff(v.c_nome)}, CRECI nº ${ff(v.c_creci)}, telefone ${ff(v.c_tel)}, e-mail ${ff(v.c_email)}, comunicando por escrito qualquer substituição.`),
+      h("CLÁUSULA 3ª – DAS OBRIGAÇÕES DO ESCRITÓRIO"),
+      p("3.1. Atender os interessados que o procurarem, segundo sua própria análise de viabilidade e a livre contratação pelo interessado."),
+      p("3.2. Fornecer à PARCEIRA material informativo institucional de sua escolha, observadas as normas de publicidade da advocacia."),
+      h("CLÁUSULA 4ª – DA AUSÊNCIA DE REMUNERAÇÃO POR CAUSAS"),
+      p("4.1. Não haverá pagamento de comissão, participação em honorários ou qualquer vantagem vinculada à indicação, contratação ou resultado de causas."),
+      p("4.2. Eventuais custos de divulgação conjunta dependerão de ajuste prévio e escrito e não poderão ser calculados sobre causas, clientes ou honorários."),
+      p("4.3. A remuneração da PARCEIRA pela corretagem é devida exclusivamente por seus clientes, pelos negócios imobiliários que realizar, sem relação com este Termo."),
+      h("CLÁUSULA 5ª – DO SIGILO PROFISSIONAL"),
+      p("5.1. As informações sobre clientes, causas e estratégias do ESCRITÓRIO são protegidas pelo sigilo profissional da advocacia, e a PARCEIRA não terá acesso a elas."),
+      p("5.2. Qualquer informação desse tipo que chegue à PARCEIRA, por qualquer meio, deverá ser preservada e não poderá ser usada ou divulgada."),
+      h("CLÁUSULA 6ª – DA CONFIDENCIALIDADE"),
+      p("6.1. São confidenciais as informações técnicas, comerciais, estratégicas e jurídicas, os dados pessoais, os estudos de regiões e projetos de desapropriação e as condições deste Termo, trocados em razão dele, em qualquer meio."),
+      p("6.2. As partes se obrigam a usar as informações confidenciais apenas para a finalidade deste Termo, a não divulgá-las a terceiros, a restringir o acesso a quem delas precise e esteja obrigado a igual sigilo, e a adotar medidas razoáveis de segurança."),
+      p("6.3. Não são confidenciais as informações de domínio público sem violação deste Termo, as já conhecidas licitamente pela parte receptora e as que devam ser reveladas por lei ou ordem judicial, mediante aviso prévio à outra parte."),
+      p("6.4. Ao término do Termo ou a pedido da parte reveladora, as informações confidenciais serão devolvidas ou eliminadas."),
+      p("6.5. O dever de confidencialidade vigora durante o prazo do Termo e por 5 (cinco) anos após seu término."),
+      p("6.6. A violação sujeita a parte infratora à responsabilização por perdas e danos, sem prejuízo de outras medidas legais."),
+      h("CLÁUSULA 7ª – DA PROTEÇÃO DE DADOS PESSOAIS"),
+      p("7.1. As partes cumprirão a Lei nº 13.709/2018 (LGPD), tratando dados pessoais apenas para a finalidade deste Termo, com medidas de segurança adequadas, e comunicarão uma à outra, em prazo razoável, eventuais incidentes de segurança."),
+      h("CLÁUSULA 8ª – DA VIGÊNCIA E DA RESCISÃO"),
+      p(`8.1. Este Termo vigora por ${ff(v.t_prazo)} meses a partir da assinatura, prorrogável por escrito.`),
+      p("8.2. Qualquer das partes poderá rescindi-lo, sem ônus, mediante aviso escrito de 30 (trinta) dias."),
+      p("8.3. A rescisão será imediata em caso de descumprimento das cláusulas 1.2, 4ª, 5ª ou 6ª."),
+      h("CLÁUSULA 9ª – DAS DISPOSIÇÕES GERAIS"),
+      p("9.1. Este Termo não cria vínculo societário, trabalhista, de mandato ou de representação entre as partes, nem exclusividade."),
+      p("9.2. Alterações dependem de documento escrito assinado pelas partes, e a cessão deste Termo é vedada sem concordância da outra parte."),
+      p("9.3. A invalidade de uma cláusula não afeta as demais."),
+      h("CLÁUSULA 10ª – DO FORO"),
+      p(`10.1. Fica eleito o foro da comarca de ${ff(v.t_foro)} para dirimir dúvidas deste Termo.`),
+      p(`E, por estarem de acordo, firmam o presente em duas vias de igual teor, na presença de duas testemunhas. ${ff(v.t_cidade)}, ${dataExt(v.t_data)}.`),
+      p("<br>______________________________________<br>ESCRITÓRIO: " + ff(v.e_razao) + "<br>" + ff(v.e_rep)),
+      p("<br>______________________________________<br>PARCEIRA: " + ff(v.i_razao) + "<br>" + ff(v.i_rep)),
+      p("<br>Testemunhas:<br><br>1) ______________________________  Nome / CPF: ________________<br><br>2) ______________________________  Nome / CPF: ________________")
+    ].join("\n");
+  }
+  function atualizarPrev() { $("tPrev").innerHTML = termoHtml(tv); }
+  function renderTermo() {
+    if (!$("termoForm")) return;
+    const ops = opcoesTermo();
+    if (termoSel !== "manual" && !ops.some((o) => o.id === termoSel)) termoSel = "manual";
+    $("tSel").innerHTML = `<option value="manual">Outra imobiliária (preencher à mão)</option>` + ops.map((o) => `<option value="${esc(o.id)}">${esc(o.rot)}</option>`).join("");
+    $("tSel").value = termoSel; aplicarSel();
+    $("termoForm").innerHTML = TF.map(([t, cs]) => `<div class="im-card"><h3 class="tt">${esc(t)}</h3><div class="tf">${cs.map(([id, l, ty]) => `<label>${esc(l)}<input type="${ty || "text"}" data-f="${id}" value="${esc(tv[id] || "")}"></label>`).join("")}</div></div>`).join("");
+    atualizarPrev();
+  }
+  async function baixarTermo() {
+    const slug = norm(tv.i_razao || "imobiliaria").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "imobiliaria", nome = `termo-parceria-${slug}.doc`;
+    const doc = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Termo de parceria</title><style>body{font-family:"Times New Roman",serif;font-size:12pt;line-height:1.5}p{text-align:justify;margin:0 0 8pt}h2{text-align:center;font-size:13pt}</style></head><body>' + termoHtml(tv) + "</body></html>";
+    const dl = window.claude && window.claude.use ? await window.claude.use("downloads").catch(() => null) : null;
+    if (dl) { try { await dl.save({ filename: nome, data: doc }); } catch (e) {} return; }
+    baixar(nome, "\ufeff" + doc, "application/msword;charset=utf-8");
+  }
+
+  function ligar() {
+    const reset = () => { limite = POR_PAGINA; render(); };
+    let t;
+    $("q").addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(() => { f.q = e.target.value; reset(); }, 160); });
+    $("esferas").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; f.esfera = b.dataset.v; document.querySelectorAll("#esferas button").forEach((x) => x.setAttribute("aria-pressed", x === b)); reset(); });
+    $("fUF").addEventListener("change", (e) => { f.uf = e.target.value; municipios(); reset(); });
+    $("fMun").addEventListener("change", (e) => { f.mun = e.target.value; reset(); });
+    $("fFim").addEventListener("change", (e) => { f.fim = e.target.value; reset(); });
+    $("fTag").addEventListener("change", (e) => { f.tag = e.target.value; reset(); });
+    $("fPer").addEventListener("change", (e) => { f.per = +e.target.value; reset(); });
+    $("ordem").addEventListener("change", reset);
+    const escolherUF = (li) => { if (!li || !li.dataset.uf) return; f.uf = f.uf === li.dataset.uf ? "" : li.dataset.uf; $("fUF").value = f.uf; municipios(); reset(); };
+    $("ufs").addEventListener("click", (e) => escolherUF(e.target.closest("li")));
+    $("ufs").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); escolherUF(e.target.closest("li")); } });
+    const escolher = (tr) => { if (!tr) return; selId = tr.dataset.id; marcarSel(); detalhe(); abrirDetalhe(); };
+    $("lista").addEventListener("click", (e) => escolher(e.target.closest("tr")));
+    $("lista").addEventListener("keydown", (e) => {
+      const tr = e.target.closest("tr"); if (!tr) return;
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); escolher(tr); }
+      if (e.key === "ArrowDown" && tr.nextElementSibling) { e.preventDefault(); tr.nextElementSibling.focus(); escolher(tr.nextElementSibling); }
+      if (e.key === "ArrowUp" && tr.previousElementSibling) { e.preventDefault(); tr.previousElementSibling.focus(); escolher(tr.previousElementSibling); }
+    });
+    $("btnMais").addEventListener("click", () => { limite += POR_PAGINA; lista(); });
+    $("btnCsv").addEventListener("click", csv);
+    $("btnUrl").addEventListener("click", () => { const u = $("urlJson").value.trim(); if (u) carregarURL(u).then((ok) => { if (ok) location.hash = "#atos"; }); });
+    $("btnExemplo").addEventListener("click", () => carregarExemplo().then(() => { location.hash = "#atos"; }));
+    $("arquivo").addEventListener("change", (e) => {
+      const arq = e.target.files[0]; if (!arq) return;
+      const r = new FileReader();
+      r.onload = () => { try { meta = null; aplicar(JSON.parse(r.result), arq.name, false); location.hash = "#atos"; } catch (err) { location.hash = "#atos"; erro(`Arquivo inválido: ${err.message}`); } };
+      r.readAsText(arq, "utf-8"); e.target.value = "";
+    });
+    $("abrirMenu").addEventListener("click", () => menu(true));
+    $("fecharMenu").addEventListener("click", () => menu(false));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { menu(false); fecharDetalhe(); } });
+    $("iUF").addEventListener("change", (e) => { fi.uf = e.target.value; renderImob(); });
+    $("iSt").addEventListener("change", (e) => { fi.st = e.target.value; renderImob(); });
+    $("iQ").addEventListener("input", (e) => { fi.q = e.target.value; fi.keys = null; renderImob(); });
+    $("iLimpar").addEventListener("click", () => { fi.keys = null; renderImob(); });
+    $("btnCsvIm").addEventListener("click", csvImob);
+    $("tSel").addEventListener("change", (e) => { termoSel = e.target.value; renderTermo(); });
+    $("termoForm").addEventListener("input", (e) => { const id = e.target.dataset && e.target.dataset.f; if (!id) return; tv[id] = e.target.value; salvarTermo(); atualizarPrev(); });
+    $("btnTermo").addEventListener("click", baixarTermo);
+    $("imobLista").addEventListener("click", (e) => { const t = e.target.closest("[data-termo]"); if (t) termoSel = t.dataset.termo; });
+    addEventListener("hashchange", rota);
+  }
+
+  ligar(); rota(); carregarImob(); iniciar();
+})();
+</script>
+
+</body></html>
