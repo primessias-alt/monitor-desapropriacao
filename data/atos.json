@@ -1,5 +1,32 @@
 [
   {
+    "id": "0c678c63ed81a81f",
+    "data_publicacao": "2026-11-09",
+    "esfera": "Federal",
+    "uf": "PR",
+    "municipio": null,
+    "orgao_emissor": "ANEEL",
+    "numero_ato": "4.213",
+    "resumo_contexto": "DESPACHO Nº 4.213, DE 4 DE NOVEMBRO DE 2026 Processo nº: 48500.030340/2026-06. Interessado: Copel Distribuição S.A., CNPJ nº 04.368.898/0001-06. Decisão: declarar de utilidade pública, para instituição de servidão administrativa, em favor do interessado, a área de terra necessária à passagem do trecho de linha de distribuição que perfaz o seccionamento da Linha de Distribuição 138 kV Dois Vizinhos - Francisco Beltrão na Subestação Sooro Renner, localizada no estado do Paraná. A íntegra deste …",
+    "url_fonte": "https://www.in.gov.br/web/dou/-/despacho-n-4.213-de-4-de-novembro-de-2026-742428099",
+    "tipo_ato": "Despacho",
+    "tags": [
+      "servidao",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Energia"
+    ],
+    "matriculas": [],
+    "areas": [],
+    "score": 5,
+    "confianca": "media",
+    "fonte": "dou",
+    "url_texto": null,
+    "edicao": "210",
+    "coletado_em": "2026-11-09T07:26:11-03:00"
+  },
+  {
     "id": "737e593e7e1c1576",
     "data_publicacao": "2026-11-06",
     "esfera": "Municipal",
