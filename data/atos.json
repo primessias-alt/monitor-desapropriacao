@@ -27,6 +27,37 @@
     "coletado_em": "2026-11-09T07:26:11-03:00"
   },
   {
+    "id": "ec82468c7268d04d",
+    "data_publicacao": "2026-11-09",
+    "esfera": "Municipal",
+    "uf": "SP",
+    "municipio": "Campinas",
+    "orgao_emissor": "Prefeitura Municipal de Campinas",
+    "numero_ato": "24.721",
+    "resumo_contexto": "DECRETO Nº 24.721, DE 6 DE NOVEMBRO DE 2026 Declara de utilidade pública e autoriza a desapropriação de imóveis destinados à instalação do Centro de Distribuição da Rede Municipal Dr. Mário Gatti de Urgência, Emergência e Hospitalar. O Prefeito do Município de Campinas, no uso de suas atribuições legais, especialmente as conferidas pelos arts. 4°, inciso VI, alínea \"b\" e 75, inciso VII, da Lei Orgânica do Município, combinados com os arts. 5°, alíneas \"d\", \"g\" e \"h\", e 6° do Decreto-Lei Federal …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/3509502/2026-11-09/6051c2c6cb8706f7225c18b604a7b6d5530f1438.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "urgencia",
+      "utilidade_publica"
+    ],
+    "finalidades": [],
+    "matriculas": [],
+    "areas": [
+      "46200 m²",
+      "97452 m²",
+      "19800 m²",
+      "63452 m²",
+      "3.110,05 m²"
+    ],
+    "score": 8,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/3509502/2026-11-09/6051c2c6cb8706f7225c18b604a7b6d5530f1438.txt",
+    "edicao": "13944",
+    "coletado_em": "2026-11-09T21:22:15-03:00"
+  },
+  {
     "id": "737e593e7e1c1576",
     "data_publicacao": "2026-11-06",
     "esfera": "Municipal",
