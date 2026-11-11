@@ -1,24 +1,22 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-10T21:24:30-03:00",
-      "periodo": "2026-11-06 a 2026-11-10",
+      "executado_em": "2026-11-11T07:20:36-03:00",
+      "periodo": "2026-11-07 a 2026-11-11",
       "modo": "indexacao",
-      "consultas_ok": 4,
+      "consultas_ok": 5,
       "consultas_total": 5,
-      "diarios_candidatos": 12,
-      "textos_integrais_baixados": 12,
-      "atos_extraidos": 8,
+      "diarios_candidatos": 13,
+      "textos_integrais_baixados": 13,
+      "atos_extraidos": 11,
       "novos": 3,
-      "atualizados": 0,
-      "erros": [
-        "consulta falhou: (\"necessidade pública\" | \"necessidade publica\") + (desapropria* | expropria*) (offset 0)"
-      ],
-      "base_api": "https://queridodiario.ok.org.br/api"
+      "atualizados": 1,
+      "erros": [],
+      "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-10T21:24:39-03:00",
-      "periodo": "2026-11-08 a 2026-11-10",
+      "executado_em": "2026-11-11T07:20:47-03:00",
+      "periodo": "2026-11-09 a 2026-11-11",
       "modo": "leitura",
       "materias_analisadas": 1,
       "atos_extraidos": 1,
@@ -27,8 +25,8 @@
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-10T21:24:45-03:00",
-      "periodo": "2026-11-06 a 2026-11-10",
+      "executado_em": "2026-11-11T07:20:54-03:00",
+      "periodo": "2026-11-07 a 2026-11-11",
       "consultas_ok": 4,
       "consultas_total": 4,
       "paginas_analisadas": 0,
@@ -38,8 +36,8 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-10T21:26:03-03:00",
-      "periodo": "2026-11-07 a 2026-11-10",
+      "executado_em": "2026-11-11T07:22:12-03:00",
+      "periodo": "2026-11-08 a 2026-11-11",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
       "atos_extraidos": 0,
@@ -48,6 +46,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-10T21:26:03-03:00",
-  "total_atos": 281
+  "ultima_execucao": "2026-11-11T07:22:12-03:00",
+  "total_atos": 284
 }
