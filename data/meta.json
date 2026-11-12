@@ -1,59 +1,51 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-11T21:43:02-03:00",
-      "periodo": "2026-11-07 a 2026-11-11",
+      "executado_em": "2026-11-12T07:23:29-03:00",
+      "periodo": "2026-11-08 a 2026-11-12",
       "modo": "indexacao",
-      "consultas_ok": 2,
+      "consultas_ok": 5,
       "consultas_total": 5,
-      "diarios_candidatos": 3,
-      "textos_integrais_baixados": 3,
-      "atos_extraidos": 5,
-      "novos": 2,
+      "diarios_candidatos": 11,
+      "textos_integrais_baixados": 11,
+      "atos_extraidos": 10,
+      "novos": 0,
       "atualizados": 0,
-      "erros": [
-        "consulta falhou: (\"necessidade pública\" | \"necessidade publica\") + (desapropria* | expropria*) (offset 0)",
-        "consulta falhou: (\"servidão administrativa\" | \"servidao administrativa\") + decreto (offset 0)",
-        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
-      ],
+      "erros": [],
       "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-11T21:44:35-03:00",
-      "periodo": "2026-11-09 a 2026-11-11",
+      "executado_em": "2026-11-12T07:23:42-03:00",
+      "periodo": "2026-11-10 a 2026-11-12",
       "modo": "leitura",
-      "materias_analisadas": 0,
-      "atos_extraidos": 0,
-      "novos": 0,
+      "materias_analisadas": 2,
+      "atos_extraidos": 2,
+      "novos": 2,
       "atualizados": 0,
-      "erros": [
-        "leitura 2026-11-09 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=09-11-2026&secao=do1",
-        "leitura 2026-11-10 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=10-11-2026&secao=do1",
-        "leitura 2026-11-11 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=11-11-2026&secao=do1"
-      ]
+      "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-11T21:44:40-03:00",
-      "periodo": "2026-11-07 a 2026-11-11",
+      "executado_em": "2026-11-12T07:23:49-03:00",
+      "periodo": "2026-11-08 a 2026-11-12",
       "consultas_ok": 4,
       "consultas_total": 4,
       "paginas_analisadas": 1,
       "atos_extraidos": 1,
-      "novos": 1,
+      "novos": 0,
       "atualizados": 0,
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-11T21:45:58-03:00",
-      "periodo": "2026-11-08 a 2026-11-11",
+      "executado_em": "2026-11-12T07:25:08-03:00",
+      "periodo": "2026-11-09 a 2026-11-12",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
       "atos_extraidos": 1,
-      "novos": 1,
+      "novos": 0,
       "atualizados": 0,
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-11T21:45:58-03:00",
-  "total_atos": 288
+  "ultima_execucao": "2026-11-12T07:25:08-03:00",
+  "total_atos": 290
 }
