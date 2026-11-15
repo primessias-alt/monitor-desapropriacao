@@ -107,6 +107,68 @@
     "coletado_em": "2026-11-13T07:20:16-03:00"
   },
   {
+    "id": "7173e9e08b77a754",
+    "data_publicacao": "2026-11-13",
+    "esfera": "Municipal",
+    "uf": "SE",
+    "municipio": "Itabaiana",
+    "orgao_emissor": "Prefeitura Municipal de Itabaiana",
+    "numero_ato": "409/2026",
+    "resumo_contexto": "DECRETO Nº 409/2026. DE 13 DE NOVEMBRO DE 2026 DECLARA DE UTILIDADE PÚBLICA PARA FINS DE DESAPROPRIAÇÃO 6.599,17 M² DA ÁREA REMANESCENTE 1 DE UM TERRENO BALDIO, LOCALIZADO NA AV. VEREADOR OLÍMPIO ARCANJO DE SANTANA, ESQUINA COM A RUA JAILTON DE MELO REZENDE E RUA MARIOVAN BAIRRO DOS PORTO, SANTOS INTEGRANTE BRITO, DA TRANSCRIÇÃO/MATRÍCULA Nº 4.914 DO CARTÓRIO DO 1º OFÍCIO DA COMARCA DE ITABAIANA, DE PROPRIEDADE DO ESPÓLIO DE JOÃO CÂNDIDO DA SILVA, TENDO COMO A COPROPRIETÁRIOS/HERDEIROS SENHORA …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/2802908/2026-11-13/5664f82616e64aecd95d0a295200d3d407227cdc.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "matricula",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Saúde"
+    ],
+    "matriculas": [
+      "4.914"
+    ],
+    "areas": [
+      "6.599,17 m²"
+    ],
+    "score": 10,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/2802908/2026-11-13/5664f82616e64aecd95d0a295200d3d407227cdc.txt",
+    "edicao": "1031",
+    "coletado_em": "2026-11-15T07:25:09-03:00"
+  },
+  {
+    "id": "799b1536a16cba75",
+    "data_publicacao": "2026-11-13",
+    "esfera": "Municipal",
+    "uf": "SP",
+    "municipio": "Tremembé",
+    "orgao_emissor": "Prefeitura Municipal de Tremembé",
+    "numero_ato": "8.128",
+    "resumo_contexto": "DECRETO N° 8.128, DE 3 DE NOVEMBRO DE 2026. “Declara de utilidade pública área urbana sem benfeitorias, para desapropriação, para o fim que especifica.” CLEMENTE ANTONIO DE LIMA NETO, Prefeito Municipal da Estância Turística de Tremembé, Estado de São Paulo, no uso de suas atribuições legais, CONSIDERANDO o artigo 4º, inciso XVIII, da Lei Orgânica do Município, o qual dispõe que, no exercício de sua autonomia, compete ao Município legislar e prover tudo quanto respeite ao interesse local, tendo …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/3554805/2026-11-13/696b4d34bbb2f42d0f66c64db032edeb301357e8.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "interesse_social",
+      "matricula",
+      "urgencia",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Viário/Rodovia"
+    ],
+    "matriculas": [
+      "8.625"
+    ],
+    "areas": [],
+    "score": 10,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/3554805/2026-11-13/696b4d34bbb2f42d0f66c64db032edeb301357e8.txt",
+    "edicao": "2480",
+    "coletado_em": "2026-11-15T07:25:07-03:00"
+  },
+  {
     "id": "60ff306120917b8c",
     "data_publicacao": "2026-11-12",
     "esfera": "Municipal",
