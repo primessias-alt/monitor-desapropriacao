@@ -1,24 +1,27 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-15T07:25:15-03:00",
+      "executado_em": "2026-11-15T21:39:25-03:00",
       "periodo": "2026-11-11 a 2026-11-15",
       "modo": "indexacao",
-      "consultas_ok": 3,
+      "consultas_ok": 0,
       "consultas_total": 5,
-      "diarios_candidatos": 12,
-      "textos_integrais_baixados": 12,
-      "atos_extraidos": 8,
-      "novos": 2,
+      "diarios_candidatos": 0,
+      "textos_integrais_baixados": 0,
+      "atos_extraidos": 0,
+      "novos": 0,
       "atualizados": 0,
       "erros": [
         "consulta falhou: (\"utilidade pública\" | \"utilidade publica\") + (desapropria* | expropria*) (offset 0)",
-        "consulta falhou: (\"servidão administrativa\" | \"servidao administrativa\") + decreto (offset 0)"
+        "consulta falhou: (\"interesse social\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"necessidade pública\" | \"necessidade publica\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"servidão administrativa\" | \"servidao administrativa\") + decreto (offset 0)",
+        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
       ],
-      "base_api": "https://queridodiario.ok.org.br/api"
+      "base_api": null
     },
     "dou": {
-      "executado_em": "2026-11-15T07:25:37-03:00",
+      "executado_em": "2026-11-15T21:39:39-03:00",
       "periodo": "2026-11-13 a 2026-11-15",
       "modo": "leitura",
       "materias_analisadas": 4,
@@ -28,7 +31,7 @@
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-15T07:25:42-03:00",
+      "executado_em": "2026-11-15T21:39:45-03:00",
       "periodo": "2026-11-11 a 2026-11-15",
       "consultas_ok": 4,
       "consultas_total": 4,
@@ -39,7 +42,7 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-15T07:27:01-03:00",
+      "executado_em": "2026-11-15T21:41:03-03:00",
       "periodo": "2026-11-12 a 2026-11-15",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
@@ -49,6 +52,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-15T07:27:01-03:00",
+  "ultima_execucao": "2026-11-15T21:41:03-03:00",
   "total_atos": 297
 }
