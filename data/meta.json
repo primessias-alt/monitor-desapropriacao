@@ -1,8 +1,8 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-15T21:39:25-03:00",
-      "periodo": "2026-11-11 a 2026-11-15",
+      "executado_em": "2026-11-16T07:55:42-03:00",
+      "periodo": "2026-11-12 a 2026-11-16",
       "modo": "indexacao",
       "consultas_ok": 0,
       "consultas_total": 5,
@@ -21,18 +21,22 @@
       "base_api": null
     },
     "dou": {
-      "executado_em": "2026-11-15T21:39:39-03:00",
-      "periodo": "2026-11-13 a 2026-11-15",
+      "executado_em": "2026-11-16T07:57:09-03:00",
+      "periodo": "2026-11-14 a 2026-11-16",
       "modo": "leitura",
-      "materias_analisadas": 4,
-      "atos_extraidos": 4,
+      "materias_analisadas": 0,
+      "atos_extraidos": 0,
       "novos": 0,
       "atualizados": 0,
-      "erros": []
+      "erros": [
+        "leitura 2026-11-14 do1: HTTPSConnectionPool(host='www.in.gov.br', port=443): Max retries exceeded with url: /leiturajornal?data=14-11-2026&secao=do1 (Caused by ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))",
+        "leitura 2026-11-15 do1: HTTPSConnectionPool(host='www.in.gov.br', port=443): Max retries exceeded with url: /leiturajornal?data=15-11-2026&secao=do1 (Caused by ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))",
+        "leitura 2026-11-16 do1: HTTPSConnectionPool(host='www.in.gov.br', port=443): Max retries exceeded with url: /leiturajornal?data=16-11-2026&secao=do1 (Caused by ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))"
+      ]
     },
     "dioe_pr": {
-      "executado_em": "2026-11-15T21:39:45-03:00",
-      "periodo": "2026-11-11 a 2026-11-15",
+      "executado_em": "2026-11-16T07:57:15-03:00",
+      "periodo": "2026-11-12 a 2026-11-16",
       "consultas_ok": 4,
       "consultas_total": 4,
       "paginas_analisadas": 0,
@@ -42,16 +46,16 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-15T21:41:03-03:00",
-      "periodo": "2026-11-12 a 2026-11-15",
+      "executado_em": "2026-11-16T07:58:33-03:00",
+      "periodo": "2026-11-13 a 2026-11-16",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
-      "atos_extraidos": 1,
+      "atos_extraidos": 0,
       "novos": 0,
       "atualizados": 0,
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-15T21:41:03-03:00",
+  "ultima_execucao": "2026-11-16T07:58:33-03:00",
   "total_atos": 297
 }
