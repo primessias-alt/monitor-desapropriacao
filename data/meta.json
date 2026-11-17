@@ -1,38 +1,36 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-16T21:39:12-03:00",
-      "periodo": "2026-11-12 a 2026-11-16",
+      "executado_em": "2026-11-17T07:37:47-03:00",
+      "periodo": "2026-11-13 a 2026-11-17",
       "modo": "indexacao",
-      "consultas_ok": 0,
+      "consultas_ok": 2,
       "consultas_total": 5,
-      "diarios_candidatos": 0,
-      "textos_integrais_baixados": 0,
-      "atos_extraidos": 0,
+      "diarios_candidatos": 5,
+      "textos_integrais_baixados": 5,
+      "atos_extraidos": 2,
       "novos": 0,
       "atualizados": 0,
       "erros": [
-        "consulta falhou: (\"utilidade pública\" | \"utilidade publica\") + (desapropria* | expropria*) (offset 0)",
         "consulta falhou: (\"interesse social\") + (desapropria* | expropria*) (offset 0)",
         "consulta falhou: (\"necessidade pública\" | \"necessidade publica\") + (desapropria* | expropria*) (offset 0)",
-        "consulta falhou: (\"servidão administrativa\" | \"servidao administrativa\") + decreto (offset 0)",
-        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
+        "consulta falhou: (\"servidão administrativa\" | \"servidao administrativa\") + decreto (offset 0)"
       ],
-      "base_api": null
+      "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-16T21:43:54-03:00",
-      "periodo": "2026-11-14 a 2026-11-16",
+      "executado_em": "2026-11-17T07:38:08-03:00",
+      "periodo": "2026-11-15 a 2026-11-17",
       "modo": "leitura",
-      "materias_analisadas": 5,
-      "atos_extraidos": 5,
-      "novos": 5,
+      "materias_analisadas": 7,
+      "atos_extraidos": 7,
+      "novos": 2,
       "atualizados": 0,
       "erros": []
     },
     "dioe_pr": {
-      "executado_em": "2026-11-16T21:44:00-03:00",
-      "periodo": "2026-11-12 a 2026-11-16",
+      "executado_em": "2026-11-17T07:38:14-03:00",
+      "periodo": "2026-11-13 a 2026-11-17",
       "consultas_ok": 4,
       "consultas_total": 4,
       "paginas_analisadas": 0,
@@ -42,8 +40,8 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-16T21:45:25-03:00",
-      "periodo": "2026-11-13 a 2026-11-16",
+      "executado_em": "2026-11-17T07:39:32-03:00",
+      "periodo": "2026-11-14 a 2026-11-17",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
       "atos_extraidos": 0,
@@ -52,6 +50,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-16T21:45:25-03:00",
-  "total_atos": 302
+  "ultima_execucao": "2026-11-17T07:39:32-03:00",
+  "total_atos": 304
 }
