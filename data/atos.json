@@ -1,5 +1,137 @@
 [
   {
+    "id": "7d2713f6c48f424a",
+    "data_publicacao": "2026-11-16",
+    "esfera": "Federal",
+    "uf": "MG",
+    "municipio": null,
+    "orgao_emissor": "ANEEL",
+    "numero_ato": "4.300",
+    "resumo_contexto": "DESPACHO Nº 4.300, DE 11 DE NOVEMBRO DE 2026 Processo nº: 48500.032964/2026-50. Interessado: Cemig Distribuição S.A., CNPJ nº 06.981.180/0001-16. Decisão: declarar de utilidade pública, para instituição de servidão administrativa, em favor do Interessado, a área de terra necessária à passagem da LD 138 kV Conceição das Pedras 1 - Maria da Fé 2 , localizada no estado de Minas Gerais. A íntegra deste Despacho (e seu anexo) consta dos autos e estará disponível em legislacao.aneel.gov.br.. THAIS …",
+    "url_fonte": "https://www.in.gov.br/web/dou/-/despacho-n-4.300-de-11-de-novembro-de-2026-744434248",
+    "tipo_ato": "Despacho",
+    "tags": [
+      "servidao",
+      "utilidade_publica"
+    ],
+    "finalidades": [],
+    "matriculas": [],
+    "areas": [],
+    "score": 5,
+    "confianca": "media",
+    "fonte": "dou",
+    "url_texto": null,
+    "edicao": "215",
+    "coletado_em": "2026-11-16T21:43:52-03:00"
+  },
+  {
+    "id": "bcc76cc16e2411e3",
+    "data_publicacao": "2026-11-16",
+    "esfera": "Federal",
+    "uf": "GO",
+    "municipio": null,
+    "orgao_emissor": "ANEEL",
+    "numero_ato": "16.833",
+    "resumo_contexto": "… Interno da ANEEL, resolve: Processo nº: 48500.029709/2026-20. Interessado: Equatorial Goiás Distribuidora de Energia S.A., CNPJ nº 01.543.032/0001-04. Objeto: Declarar de utilidade pública, para desapropriação, em favor da interessada, a área de terra necessária à implantação da Subestação 34,5/13,8 kV Savana, localizada no estado de Goiás. A íntegra desta Resolução consta dos autos e encontra-se disponível no endereço eletrônico http://legislacao.aneel.gov.br. GENTIL NOGUEIRA DE SÁ JÚNIOR",
+    "url_fonte": "https://www.in.gov.br/web/dou/-/resolucao-autorizativa-n-16.833-de-10-de-novembro-de-2026-744424275",
+    "tipo_ato": "Resolução",
+    "tags": [
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Energia"
+    ],
+    "matriculas": [],
+    "areas": [],
+    "score": 6,
+    "confianca": "media",
+    "fonte": "dou",
+    "url_texto": null,
+    "edicao": "215",
+    "coletado_em": "2026-11-16T21:43:44-03:00"
+  },
+  {
+    "id": "b4015017651c5831",
+    "data_publicacao": "2026-11-16",
+    "esfera": "Federal",
+    "uf": "PR",
+    "municipio": "Andirá",
+    "orgao_emissor": "ANTT",
+    "numero_ato": "1.889",
+    "resumo_contexto": "… com o Art. 6º, X, da Resolução ANTT nº 5.818, de 03 de maio de 2018 e fundamentado no que consta do Processo nº 50505.146992/2026-55, decide: Art. 1º Declarar de utilidade pública, para fins de desapropriação e afetação a fins rodoviários em favor da União, os bens imóveis delimitados pelas poligonais descritas no Anexo desta Decisão, necessários à execução das obras de trombeta na BR-369/PR, nos km 039+200 no município de Andirá/PR, conforme informações de geolocalização constantes …",
+    "url_fonte": "https://www.in.gov.br/web/dou/-/decisao-surod-n-1.889-de-6-de-novembro-de-2026-744423880",
+    "tipo_ato": "Decisão",
+    "tags": [
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Equipamento público",
+      "Viário/Rodovia"
+    ],
+    "matriculas": [],
+    "areas": [],
+    "score": 7,
+    "confianca": "media",
+    "fonte": "dou",
+    "url_texto": null,
+    "edicao": "215",
+    "coletado_em": "2026-11-16T21:43:48-03:00"
+  },
+  {
+    "id": "8073d507eac8e496",
+    "data_publicacao": "2026-11-16",
+    "esfera": "Federal",
+    "uf": "PR",
+    "municipio": "Bandeirantes",
+    "orgao_emissor": "ANTT",
+    "numero_ato": "1.873",
+    "resumo_contexto": "… com o Art. 6º, X, da Resolução ANTT nº 5.818, de 03 de maio de 2018 e fundamentado no que consta do Processo nº 50505.098606/2026-10, decide: Art. 1º Declarar de utilidade pública, para fins de desapropriação e afetação a fins rodoviários em favor da União, os bens imóveis delimitados pelas poligonais descritas no Anexo desta Decisão, necessários à execução das obras do diamante na PR-855, nos km 002+900 no município de Bandeirantes/PR, conforme informações de geolocalização …",
+    "url_fonte": "https://www.in.gov.br/web/dou/-/decisao-surod-n-1.873-de-5-de-novembro-de-2026-744429944",
+    "tipo_ato": "Decisão",
+    "tags": [
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Equipamento público",
+      "Viário/Rodovia"
+    ],
+    "matriculas": [],
+    "areas": [],
+    "score": 7,
+    "confianca": "media",
+    "fonte": "dou",
+    "url_texto": null,
+    "edicao": "215",
+    "coletado_em": "2026-11-16T21:43:50-03:00"
+  },
+  {
+    "id": "82a29a2e4b81ac00",
+    "data_publicacao": "2026-11-16",
+    "esfera": "Federal",
+    "uf": "PR",
+    "municipio": "Jaguariaíva",
+    "orgao_emissor": "ANTT",
+    "numero_ato": "1.909",
+    "resumo_contexto": "… com o Art. 6º, X, da Resolução ANTT nº 5.818, de 03 de maio de 2018 e fundamentado no que consta do Processo nº 50505.144731/2026-09, decide: Art. 1º Declarar de utilidade pública, para fins de desapropriação e afetação a fins rodoviários em favor da União, os bens imóveis delimitados pelas poligonais descritas no Anexo desta Decisão, necessários à execução das obras do dispositivo parclo sem rotatória na PR-151, nos km 224+900 no município de Jaguariaíva/PR, conforme informações de …",
+    "url_fonte": "https://www.in.gov.br/web/dou/-/decisao-surod-n-1.909-de-6-de-novembro-de-2026-744399280",
+    "tipo_ato": "Decisão",
+    "tags": [
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Equipamento público",
+      "Viário/Rodovia"
+    ],
+    "matriculas": [],
+    "areas": [],
+    "score": 7,
+    "confianca": "media",
+    "fonte": "dou",
+    "url_texto": null,
+    "edicao": "215",
+    "coletado_em": "2026-11-16T21:43:46-03:00"
+  },
+  {
     "id": "c6ded9d1206bf6b1",
     "data_publicacao": "2026-11-13",
     "esfera": "Federal",
