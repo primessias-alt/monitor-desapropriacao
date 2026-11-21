@@ -1,5 +1,32 @@
 [
   {
+    "id": "78e1c1f9baa9f32a",
+    "data_publicacao": "2026-11-19",
+    "esfera": "Municipal",
+    "uf": "BA",
+    "municipio": "Senhor do Bonfim",
+    "orgao_emissor": "Prefeitura Municipal de Senhor do Bonfim",
+    "numero_ato": null,
+    "resumo_contexto": "… DO BONFIM - BAHIA GABINETE DO PREFEITO VII - Zelar pela boa qualidade do serviço, receber, apurar e solucionar queixas e reclamações dos usuários; VIII - Declarar de utilidade pública os bens necessários à execução do serviço, promovendo as desapropriações, diretamente ou mediante outorga de poderes à concessionária, caso em que será desta a responsabilidade pelas indenizações cabíveis; IX - Declarar de necessidade ou utilidade pública, para fins de instituição de servidão administrativa, …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/2930105/2026-11-19/1f6ffa922a46641b7f1682b89b59f184429f99f1.pdf",
+    "tipo_ato": "Não identificado",
+    "tags": [
+      "servidao",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Lazer/Ambiental"
+    ],
+    "matriculas": [],
+    "areas": [],
+    "score": 6,
+    "confianca": "media",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/2930105/2026-11-19/1f6ffa922a46641b7f1682b89b59f184429f99f1.txt",
+    "edicao": "6.687",
+    "coletado_em": "2026-11-20T21:30:55-03:00"
+  },
+  {
     "id": "d1c24faddd20c06a",
     "data_publicacao": "2026-11-19",
     "esfera": "Federal",
@@ -192,8 +219,8 @@
       "3.409"
     ],
     "areas": [
-      "39.902,00 m²",
-      "3.242,77 m²"
+      "3.242,77 m²",
+      "39.902,00 m²"
     ],
     "score": 10,
     "confianca": "alta",
