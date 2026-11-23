@@ -1,43 +1,47 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-22T21:27:13-03:00",
-      "periodo": "2026-11-18 a 2026-11-22",
+      "executado_em": "2026-11-23T07:42:40-03:00",
+      "periodo": "2026-11-19 a 2026-11-23",
       "modo": "indexacao",
-      "consultas_ok": 5,
+      "consultas_ok": 2,
       "consultas_total": 5,
-      "diarios_candidatos": 13,
-      "textos_integrais_baixados": 13,
-      "atos_extraidos": 9,
+      "diarios_candidatos": 1,
+      "textos_integrais_baixados": 1,
+      "atos_extraidos": 1,
       "novos": 0,
-      "atualizados": 4,
-      "erros": [],
+      "atualizados": 1,
+      "erros": [
+        "consulta falhou: (\"interesse social\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"necessidade pública\" | \"necessidade publica\") + (desapropria* | expropria*) (offset 0)",
+        "consulta falhou: (\"3.365\" | \"3365\") + decret* (offset 0)"
+      ],
       "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-22T21:27:20-03:00",
-      "periodo": "2026-11-20 a 2026-11-22",
+      "executado_em": "2026-11-23T07:43:00-03:00",
+      "periodo": "2026-11-21 a 2026-11-23",
       "modo": "leitura",
-      "materias_analisadas": 0,
+      "materias_analisadas": 7,
+      "atos_extraidos": 7,
+      "novos": 7,
+      "atualizados": 0,
+      "erros": []
+    },
+    "dioe_pr": {
+      "executado_em": "2026-11-23T07:43:06-03:00",
+      "periodo": "2026-11-19 a 2026-11-23",
+      "consultas_ok": 4,
+      "consultas_total": 4,
+      "paginas_analisadas": 0,
       "atos_extraidos": 0,
       "novos": 0,
       "atualizados": 0,
       "erros": []
     },
-    "dioe_pr": {
-      "executado_em": "2026-11-22T21:27:25-03:00",
-      "periodo": "2026-11-18 a 2026-11-22",
-      "consultas_ok": 4,
-      "consultas_total": 4,
-      "paginas_analisadas": 1,
-      "atos_extraidos": 1,
-      "novos": 0,
-      "atualizados": 0,
-      "erros": []
-    },
     "google_news_rss": {
-      "executado_em": "2026-11-22T21:28:44-03:00",
-      "periodo": "2026-11-19 a 2026-11-22",
+      "executado_em": "2026-11-23T07:44:24-03:00",
+      "periodo": "2026-11-20 a 2026-11-23",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
       "atos_extraidos": 0,
@@ -46,6 +50,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-22T21:28:44-03:00",
-  "total_atos": 318
+  "ultima_execucao": "2026-11-23T07:44:24-03:00",
+  "total_atos": 325
 }
