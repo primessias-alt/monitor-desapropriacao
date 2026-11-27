@@ -1,5 +1,34 @@
 [
   {
+    "id": "8b64255d5161769e",
+    "data_publicacao": "2026-11-26",
+    "esfera": "Municipal",
+    "uf": "AL",
+    "municipio": "Satuba",
+    "orgao_emissor": "Prefeitura Municipal de Satuba",
+    "numero_ato": "79",
+    "resumo_contexto": "DECRETO Nº 79 DE 25 DE NOVEMBRO DE 2026 CONSTRUÇÃO DE PRAÇA Declara de utilidade pública para fins de desapropriação, imóvel rural localizado no Povoado Chã do Forjo, s/nº, Zona Rural do Município de Taquarana/AL – CEP: 57.640-000 O PREFEITO DO MUNICÍPIO DE TAQUARANA, Estado de Alagoas, no uso de suas atribuições que lhe são conferidas pela Lei Orgânica deste Município, bem como pelo Decreto- Lei n.º 3.365, de 21 de junho de 1941, e de acordo com o que determina o Art. 5º, inciso XXIV, da …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/2700000/2026-11-26/9532f4ec7292b5d8ad471f0c344c4e76e5635a8d.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "coordenadas",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Lazer/Ambiental"
+    ],
+    "matriculas": [],
+    "areas": [
+      "314,00 m²"
+    ],
+    "score": 11,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/2708907/2026-11-26/682876a76a5ed5537b1b72d6fade1eb8.txt",
+    "edicao": "2941",
+    "coletado_em": "2026-11-26T21:39:45-03:00"
+  },
+  {
     "id": "20f598b78f68c010",
     "data_publicacao": "2026-11-25",
     "esfera": "Federal",
@@ -112,18 +141,18 @@
       "Viário/Rodovia"
     ],
     "matriculas": [
+      "10.150",
+      "10.531",
       "12.049",
       "8.089",
-      "8.458",
-      "10.531",
-      "10.150"
+      "8.458"
     ],
     "areas": [
-      "22,27 m²",
-      "33,88 m²",
-      "222,48 m²",
+      "188,60 m²",
       "197,63 m²",
-      "188,60 m²"
+      "22,27 m²",
+      "222,48 m²",
+      "33,88 m²"
     ],
     "score": 12,
     "confianca": "alta",
