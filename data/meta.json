@@ -1,21 +1,21 @@
 {
   "fontes": {
     "querido_diario": {
-      "executado_em": "2026-11-27T07:26:08-03:00",
+      "executado_em": "2026-11-27T21:35:17-03:00",
       "periodo": "2026-11-23 a 2026-11-27",
       "modo": "indexacao",
       "consultas_ok": 5,
       "consultas_total": 5,
-      "diarios_candidatos": 14,
-      "textos_integrais_baixados": 14,
-      "atos_extraidos": 15,
-      "novos": 7,
-      "atualizados": 0,
+      "diarios_candidatos": 16,
+      "textos_integrais_baixados": 16,
+      "atos_extraidos": 16,
+      "novos": 1,
+      "atualizados": 1,
       "erros": [],
       "base_api": "https://api.queridodiario.org.br"
     },
     "dou": {
-      "executado_em": "2026-11-27T07:28:44-03:00",
+      "executado_em": "2026-11-27T21:35:21-03:00",
       "periodo": "2026-11-25 a 2026-11-27",
       "modo": "leitura",
       "materias_analisadas": 0,
@@ -23,13 +23,13 @@
       "novos": 0,
       "atualizados": 0,
       "erros": [
-        "leitura 2026-11-25 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=25-11-2026&secao=do1",
-        "leitura 2026-11-26 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1",
-        "leitura 2026-11-27 do1: 502 Server Error: Bad Gateway for url: https://www.in.gov.br/leiturajornal?data=27-11-2026&secao=do1"
+        "leitura 2026-11-25 do1: 404 Client Error: Not Found for url: https://www.in.gov.br/leiturajornal?data=25-11-2026&secao=do1",
+        "leitura 2026-11-26 do1: 404 Client Error: Not Found for url: https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1",
+        "leitura 2026-11-27 do1: 404 Client Error: Not Found for url: https://www.in.gov.br/leiturajornal?data=27-11-2026&secao=do1"
       ]
     },
     "dioe_pr": {
-      "executado_em": "2026-11-27T07:28:49-03:00",
+      "executado_em": "2026-11-27T21:35:27-03:00",
       "periodo": "2026-11-23 a 2026-11-27",
       "consultas_ok": 4,
       "consultas_total": 4,
@@ -40,7 +40,7 @@
       "erros": []
     },
     "google_news_rss": {
-      "executado_em": "2026-11-27T07:30:18-03:00",
+      "executado_em": "2026-11-27T21:36:45-03:00",
       "periodo": "2026-11-24 a 2026-11-27",
       "ufs_consultadas": 27,
       "consultas_ok": 27,
@@ -50,6 +50,6 @@
       "erros": []
     }
   },
-  "ultima_execucao": "2026-11-27T07:30:18-03:00",
-  "total_atos": 345
+  "ultima_execucao": "2026-11-27T21:36:45-03:00",
+  "total_atos": 346
 }

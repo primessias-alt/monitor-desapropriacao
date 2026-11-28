@@ -59,6 +59,35 @@
     "coletado_em": "2026-11-27T07:26:04-03:00"
   },
   {
+    "id": "2d58b1d299b359de",
+    "data_publicacao": "2026-11-26",
+    "esfera": "Municipal",
+    "uf": "SP",
+    "municipio": "Jundiaí",
+    "orgao_emissor": "Prefeitura Municipal de Jundiaí",
+    "numero_ato": "36.929",
+    "resumo_contexto": "… 1941, e face ao que consta do Processo Eletrônico SEI nº PMJ.0003642/2026, -------------------------------------------------------------------- Art. 1º Fica declarado de utilidade pública, para fins de desapropriação, por via administrativa ou judicial, o imóvel objeto da matrícula nº 23.303 do 2º Oficial de Registro de Imóveis de Jundiaí, localizado na Rua São Pedro, nº 91, Vila Joana, neste Município, de propriedade de NIVALDO BRIZIDO e sua mulher, EDNA BALDAN BRIZIDO, necessário à …",
+    "url_fonte": "https://data.queridodiario.ok.org.br/3525904/2026-11-26/ab12db0b0306109bd60091fc5e23fb0de3997893.pdf",
+    "tipo_ato": "Decreto",
+    "tags": [
+      "matricula",
+      "utilidade_publica"
+    ],
+    "finalidades": [
+      "Viário/Rodovia"
+    ],
+    "matriculas": [
+      "23.303"
+    ],
+    "areas": [],
+    "score": 10,
+    "confianca": "alta",
+    "fonte": "querido_diario",
+    "url_texto": "https://data.queridodiario.ok.org.br/3525904/2026-11-26/ab12db0b0306109bd60091fc5e23fb0de3997893.txt",
+    "edicao": "5914",
+    "coletado_em": "2026-11-27T21:35:13-03:00"
+  },
+  {
     "id": "6ed50425fbc62808",
     "data_publicacao": "2026-11-26",
     "esfera": "Municipal",
